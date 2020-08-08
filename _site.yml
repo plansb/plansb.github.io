@@ -1,0 +1,16 @@
+name: "sb-revive"
+navbar:
+  title: "SB-Revive"
+  type: inverse # inverse or default
+  left:
+    - text: "Submit a Proposal"
+      icon: fa-paper-plane
+      href: https://forms.gle/VzRhb2BT8q3tRLHy9
+    - text: "Proposals"
+      icon: fa-files-o
+      href: proposals.html
+output:
+  html_document:
+    theme: yeti # https://bootswatch.com
+    # css: styles.css
+output_dir: "."

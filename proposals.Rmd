@@ -1,0 +1,21 @@
+---
+title: "Proposals"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
+```
+
+
+```{r}
+library(dplyr)
+library(readr)
+library(DT)
+
+proposals_csv <- "https://docs.google.com/spreadsheets/d/1D0Zi7T85hTB-56G_A6VpHIAxDDOs-PgVi6SwbAbkem8/gviz/tq?tqx=out:csv&sheet=0"
+
+proposals <- read_csv(proposals_csv)
+
+datatable(proposals)
+```

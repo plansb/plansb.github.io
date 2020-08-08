@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Focus Areas</name>
+    <Style id="poly-006064-1200-171-normal">
+      <LineStyle>
+        <color>ff646000</color>
+        <width>1.2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>ab646000</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-006064-1200-171-highlight">
+      <LineStyle>
+        <color>ff646000</color>
+        <width>1.8</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>ab646000</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-006064-1200-171">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-006064-1200-171-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-006064-1200-171-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="poly-01579B-1200-77-normal">
+      <LineStyle>
+        <color>ff9b5701</color>
+        <width>1.2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d9b5701</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-01579B-1200-77-highlight">
+      <LineStyle>
+        <color>ff9b5701</color>
+        <width>1.8</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d9b5701</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-01579B-1200-77">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-01579B-1200-77-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-01579B-1200-77-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="poly-673AB7-1200-77-normal">
+      <LineStyle>
+        <color>ffb73a67</color>
+        <width>1.2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4db73a67</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-673AB7-1200-77-highlight">
+      <LineStyle>
+        <color>ffb73a67</color>
+        <width>1.8</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4db73a67</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-673AB7-1200-77">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-673AB7-1200-77-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-673AB7-1200-77-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="poly-880E4F-1200-77-nodesc-normal">
+      <LineStyle>
+        <color>ff4f0e88</color>
+        <width>1.2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d4f0e88</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="poly-880E4F-1200-77-nodesc-highlight">
+      <LineStyle>
+        <color>ff4f0e88</color>
+        <width>1.8</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d4f0e88</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="poly-880E4F-1200-77-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-880E4F-1200-77-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-880E4F-1200-77-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="poly-E65100-1200-77-nodesc-normal">
+      <LineStyle>
+        <color>ff0051e6</color>
+        <width>1.2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d0051e6</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="poly-E65100-1200-77-nodesc-highlight">
+      <LineStyle>
+        <color>ff0051e6</color>
+        <width>1.8</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d0051e6</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="poly-E65100-1200-77-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-E65100-1200-77-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-E65100-1200-77-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="poly-FFD600-1200-77-normal">
+      <LineStyle>
+        <color>ff00d6ff</color>
+        <width>1.2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d00d6ff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-FFD600-1200-77-highlight">
+      <LineStyle>
+        <color>ff00d6ff</color>
+        <width>1.8</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d00d6ff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-FFD600-1200-77">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-FFD600-1200-77-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-FFD600-1200-77-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>Area 1 - 400 Block</name>
+      <description><![CDATA[b/n Gutierrez & Haley]]></description>
+      <styleUrl>#poly-006064-1200-171</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              -119.6965947,34.4157654,0
+              -119.6953475,34.4148636,0
+              -119.6931038,34.4169525,0
+              -119.6943698,34.4178541,0
+              -119.6965947,34.4157654,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Area 2 - 500 Block</name>
+      <description><![CDATA[b/n Haley & Cota]]></description>
+      <styleUrl>#poly-673AB7-1200-77</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              -119.6978902,34.4167002,0
+              -119.6966644,34.4158052,0
+              -119.6944355,34.4178961,0
+              -119.6956693,34.4187834,0
+              -119.6978902,34.4167002,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Area 3 - 600 Block</name>
+      <description><![CDATA[b/n Cota & Ortega]]></description>
+      <styleUrl>#poly-01579B-1200-77</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              -119.6969203,34.419695,0
+              -119.6991198,34.4175886,0
+              -119.6979181,34.4167566,0
+              -119.6957402,34.4188454,0
+              -119.6969203,34.419695,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Area 4 -7/800 Block</name>
+      <description><![CDATA[b/n Ortega & Canon Perdido]]></description>
+      <styleUrl>#poly-FFD600-1200-77</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              -119.7016732,34.4194826,0
+              -119.6991949,34.4176682,0
+              -119.6969955,34.419757,0
+              -119.6994524,34.4215536,0
+              -119.7016732,34.4194826,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Area 5 - 900 Block</name>
+      <styleUrl>#poly-E65100-1200-77-nodesc</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              -119.700772,34.4224917,0
+              -119.7029392,34.4203853,0
+              -119.7017483,34.4195357,0
+              -119.6995382,34.4216067,0
+              -119.700772,34.4224917,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Area 6 - 1000 Block</name>
+      <styleUrl>#poly-880E4F-1200-77-nodesc</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              -119.702038,34.4234298,0
+              -119.7042696,34.4213589,0
+              -119.7030787,34.4204827,0
+              -119.7008471,34.4225625,0
+              -119.702038,34.4234298,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>

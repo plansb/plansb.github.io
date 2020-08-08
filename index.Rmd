@@ -1,0 +1,21 @@
+---
+title: "SB Revive"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
+```
+
+```{r}
+library(sf)
+library(here)
+library(mapview)
+
+areas_kmz <- here("data/google-mymap_focus-areas.kml")
+areas     <- read_sf(areas_kmz)
+
+mapview(areas)
+```
