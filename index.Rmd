@@ -7,8 +7,6 @@ editor_options:
 
 Welcome to our [Santa Barbara](https://santabaraca.gov) **Community** _project_!
 
-
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = F, warning = F, message = F)
 ```
