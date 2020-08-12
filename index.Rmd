@@ -5,6 +5,8 @@ editor_options:
   chunk_output_type: console
 ---
 
+Welcome to our Community project!
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = F, warning = F, message = F)
 ```
