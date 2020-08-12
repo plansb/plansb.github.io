@@ -16,8 +16,8 @@ library(sf)
 library(here)
 library(mapview)
 
-areas_kmz <- here("data/google-mymap_focus-areas.kml")
-areas     <- read_sf(areas_kmz)
+areas_kml <- here("data/doc.kml")
+areas     <- read_sf(areas_kml)
 
 mapview(areas)
 ```
