@@ -5,7 +5,9 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to our Community project!
+Welcome to our [Santa Barbara](https://santabaraca.gov) **Community** _project_!
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = F, warning = F, message = F)
@@ -21,3 +23,8 @@ areas     <- read_sf(areas_kmz)
 
 mapview(areas)
 ```
+
+Sponsored by:
+
+- Real Site Plans
+- EcoQuants
