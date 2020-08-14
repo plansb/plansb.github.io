@@ -207,6 +207,7 @@ get_area_plys <- function(){
       mutate(layer = x))
   area_plys <- do.call(rbind, area_lyrs) %>% 
     st_make_valid()  %>% 
+    select(-layer) %>% 
     left_join(
       areas, 
       by = c("Name" = "area_kml")) %>% 

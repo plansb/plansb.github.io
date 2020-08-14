@@ -1,5 +1,6 @@
 ---
-title: "AIASB Charrette - State Street Revitalization"
+title: "AIA Charrette 2020 for Santa Barbara"
+subtitle: "re invigorate, re invent, re imagine, re purpose"
 output: html_document
 editor_options: 
   chunk_output_type: console
@@ -16,15 +17,32 @@ source("functions.R")
 
 area_plys <- get_area_plys()
 
-leaflet(area_plys) %>% 
+leaflet() %>% 
+  addProviderTiles(providers$Stamen.TonerLite, group = "Black & white",
+    options = providerTileOptions(opacity = 0.5)) %>% 
   addProviderTiles(
-    providers$CartoDB.Voyager,
-    options = providerTileOptions(opacity = 0.8)) %>% 
+    providers$CartoDB.Voyager, group = "Streets",
+    options = providerTileOptions(opacity = 0.8)) %>%
+  addProviderTiles(providers$Esri.WorldImagery, group = "Satellite",
+    options = providerTileOptions(opacity = 0.5)) %>% 
   addPolygons(
+    data = area_plys %>% 
+      filter(layer == "Main Focus Areas"),
+    group = "Main Focus Areas",
     color     = ~color, opacity     = 0.9, weight = 0.5,
-    fillColor = ~color, fillOpacity = 0.5,
-    label = ~area_name,
-    popup = ~popup_html)
+    fillColor = ~color, fillOpacity = 0.6,
+    label = ~area_name, popup = ~popup_html) %>%
+  addPolygons(
+    data = area_plys %>% 
+      filter(layer == "Additional Focus Areas"),
+    group = "Additional Focus Areas",
+    color     = ~color, opacity     = 0.6, weight = 0.5,
+    fillColor = ~color, fillOpacity = 0.3,
+    label = ~area_name, popup = ~popup_html) %>%
+  addLayersControl(
+    baseGroups = c("Black & white", "Streets", "Satellite"),
+    overlayGroups = c("Main Focus Areas", "Additional Focus Areas"),
+    options = layersControlOptions(collapsed = FALSE))
 ```
 
 ## Projects
