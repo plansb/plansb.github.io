@@ -5,40 +5,54 @@ navbar:
   left:
   - text: Teams
     menu:
-    - text: 400 Block Team A
-      href: ./team_400A.html
-    - text: 400 Block Team B
-      href: ./team_400B.html
-    - text: 500 Block Team A
-      href: ./team_500A.html
-    - text: 500 Block Team B
-      href: ./team_500B.html
-    - text: 600 Block Team A
-      href: ./team_600A.html
-    - text: 600 Block Team B
-      href: ./team_600B.html
-    - text: 700/800 Block Team A
-      href: ./team_700A.html
-    - text: 700/800 Block Team B
-      href: ./team_700B.html
-    - text: 900 Block Team A
-      href: ./team_900A.html
-    - text: 900 Block Team B
-      href: ./team_900B.html
-    - text: 1000 Block Team A
-      href: ./team_1000A.html
-    - text: 1000 Block Team B
-      href: ./team_1000B.html
+    - text: 1000 Block
+      menu:
+      - text: 1000 Block Team A
+        href: ./team_1000A.html
+      - text: 1000 Block Team B
+        href: ./team_1000B.html
+    - text: 400 Block
+      menu:
+      - text: 400 Block Team A
+        href: ./team_400A.html
+      - text: 400 Block Team B
+        href: ./team_400B.html
+    - text: 500 Block
+      menu:
+      - text: 500 Block Team A
+        href: ./team_500A.html
+      - text: 500 Block Team B
+        href: ./team_500B.html
+    - text: 600 Block
+      menu:
+      - text: 600 Block Team A
+        href: ./team_600A.html
+      - text: 600 Block Team B
+        href: ./team_600B.html
+    - text: 700/800 Block
+      menu:
+      - text: 700/800 Block Team A
+        href: ./team_700A.html
+      - text: 700/800 Block Team B
+        href: ./team_700B.html
+    - text: 900 Block
+      menu:
+      - text: 900 Block Team A
+        href: ./team_900A.html
+      - text: 900 Block Team B
+        href: ./team_900B.html
+    - text: Corridor
+      menu:
+      - text: Corridor Team A
+        href: ./team_corA.html
+      - text: Corridor Team B
+        href: ./team_corB.html
+      - text: Corridor Team C
+        href: ./team_corC.html
+      - text: Corridor Team D
+        href: ./team_corD.html
     - text: Expertise Support Team
       href: ./team_sup.html
-    - text: Corridor Team A
-      href: ./team_corA.html
-    - text: Corridor Team B
-      href: ./team_corB.html
-    - text: Corridor Team C
-      href: ./team_corC.html
-    - text: Corridor Team D
-      href: ./team_corD.html
   - text: Projects
     icon: fa-pencil
     href: index.html#projects

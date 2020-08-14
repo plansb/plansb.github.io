@@ -156,15 +156,42 @@ update_teams_menu <- function(){
   idx_teams <- which(map_chr(site$navbar$left, "text") == "Teams")
   
   # update teams nav menu ----
-  teams_menu = read_csv(teams_csv) %>% 
+  teams_area <- read_csv(teams_csv) %>% 
+    left_join(
+      read_csv(areas_csv) %>% 
+        select(area_key, area_name),
+      by = "area_key")
+     
+  teams_menu <- teams_area %>% 
+    filter(!is.na(area_key)) %>% 
     mutate(
       text_href = map2(
         team_name, team_htm, 
         function(x,y) 
           list(
             text = x, 
-            href = y))) %>% 
-    pull(text_href)
+            href = y))) %>%
+    group_by(area_name) %>% 
+    summarize(
+      list_text_href = list(text_href)) %>% 
+    mutate(
+      area_menu = map2(
+        area_name, list_text_href,
+        function(x, y)
+          list(
+            text = x,
+            menu = y))) %>%
+    bind_rows(
+      teams_area %>% 
+        filter(is.na(area_key)) %>% 
+        mutate(
+          area_menu = map2(
+            team_name, team_htm, 
+            function(x,y) 
+              list(
+                text = x, 
+                href = y)))) %>% 
+    pull(area_menu)
   site$navbar$left[[idx_teams]]$menu = teams_menu
   write_yaml(site, here("_site.yml"))
 }
