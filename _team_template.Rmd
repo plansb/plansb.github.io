@@ -1,0 +1,39 @@
+---
+title: "`r params$team_name`"
+output: html_document
+params:
+  team_name: "400 Block Team A"
+  team_key: "400A"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
+```
+
+## Overview
+
+```{r}
+source("functions.R")
+
+team <- read_csv(teams_csv) %>% 
+  filter(team_key == params$team_key)
+
+datatable(team)
+```
+
+## Projects
+
+```{r}
+projects <- read_csv(projects_csv) %>% 
+  filter(team_key == params$team_key) %>% 
+  left_join(
+    read_csv(teams_csv) %>% 
+      select(team_key, team_htm),
+    by = "team_key") %>% 
+  mutate(
+    Project = glue("<a href={project_htm}>{`Project Name`}</a>")) %>% 
+  select(Area = area_name, Project)
+
+datatable(projects, escape = F)  
+```
+

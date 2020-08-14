@@ -1,0 +1,14 @@
+---
+title: "About"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+To add:
+
+- Mission Statement
+- Sponsors
+- People
+- ...

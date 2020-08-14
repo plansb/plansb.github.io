@@ -1,0 +1,63 @@
+---
+title: "`r params$project_name`"
+output: html_document
+params:
+  project_name: "Raised platform on street"
+  project_key: "raised-platform-on-street"
+  #project_name: "Nice potted plants on street"
+  #project_key: "project_nice-potted-plants-on-street"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
+```
+
+## Overview
+
+```{r}
+source("functions.R")
+
+img_overview <- read_csv(images_csv) %>% 
+  filter(
+    project_key == params$project_key,
+    img_category == "overview") %>% 
+  pull(path)
+
+if (length(img_overview) == 1)
+  knitr::include_graphics(img_overview)
+```
+
+## Image Gallery
+
+```{r}
+library(bsplus)
+
+imgs <- read_csv(images_csv) %>% 
+  filter(
+    project_key == params$project_key,
+    img_category == "other") %>% 
+  mutate(
+    caption = basename(path) %>% fs::path_ext_remove()) %>% 
+  select(path, caption)
+
+carousel <- bs_carousel(id = "imgs_other", use_indicators = TRUE) %>% 
+  bs_append(
+    content = bs_carousel_image(src = imgs$path[1]),
+    caption = bs_carousel_caption(imgs$caption[1])) %>%
+  bs_append(
+    content = bs_carousel_image(src = imgs$path[2]),
+    caption = bs_carousel_caption(imgs$caption[2])) %>%
+  bs_append(
+    content = bs_carousel_image(src = imgs$path[3]),
+    caption = bs_carousel_caption(imgs$caption[3])) 
+carousel
+```
+
+## Details
+
+```{r}
+project <- read_csv(projects_csv) %>% 
+  filter(project_key == params$project_key)
+
+datatable(project)
+```

@@ -1,28 +1,44 @@
 ---
-title: "SB Revive"
+title: "Planning for Santa Barbara's State Street Revitalization"
 output: html_document
 editor_options: 
   chunk_output_type: console
 ---
 
-Welcome to our [Santa Barbara](https://santabaraca.gov) **Community** _project_!
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = F, warning = F, message = F)
 ```
 
+## Map
+
 ```{r}
-library(sf)
-library(here)
-library(mapview)
+source("functions.R")
 
-areas_kml <- here("data/doc.kml")
-areas     <- read_sf(areas_kml)
+area_plys <- get_area_plys()
 
-mapview(areas)
+leaflet(area_plys) %>% 
+  addProviderTiles(
+    providers$CartoDB.Voyager,
+    options = providerTileOptions(opacity = 0.8)) %>% 
+  addPolygons(
+    color     = ~color, opacity     = 0.9, weight = 0.5,
+    fillColor = ~color, fillOpacity = 0.5,
+    label = ~area_name,
+    popup = ~popup_html)
 ```
 
-Sponsored by:
+## Projects
 
-- Real Site Plans
-- EcoQuants
+```{r}
+projects <- read_csv(projects_csv) %>% 
+  left_join(
+    read_csv(teams_csv) %>% 
+      select(team_key, team_htm),
+    by = "team_key") %>% 
+  mutate(
+    Project = glue("<a href={project_htm}>{`Project Name`}</a>"), 
+    Team    = glue("<a href={team_htm}>{team_name}</a>")) %>% 
+  select(Area = area_name, Project, Team)
+
+datatable(projects, escape = F)  
+```

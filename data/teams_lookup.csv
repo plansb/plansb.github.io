@@ -1,0 +1,18 @@
+team_key,team_name,team_matrix,team_project,area_key
+400A,400 Block Team A,Area 1 A-  400 Block Team,Area 1 A - 400 Block,400
+400B,400 Block Team B,Area 1 B-  400 Block Team,Area 1 B - 400 Block,400
+500A,500 Block Team A,Area 2 A-  500 Block Team,Area 2 A - 500 Block,500
+500B,500 Block Team B,Area 2 B-  500 Block Team,Area 2 B - 500 Block,500
+600A,600 Block Team A,Area 3 A- 600 Block Team,Area 3 A - 600 Block,600
+600B,600 Block Team B,Area 3 B- 600 Block Team,Area 3 B - 600 Block,600
+700A,700/800 Block Team A,Area 4 A-  700/800 Block Team,Area 4 A - 700/800 Block,700
+700B,700/800 Block Team B,Area 4 B-  700/800 Block Team,Area 4 B - 700/800 Block,700
+900A,900 Block Team A,Area 5 A-  900 Block Team,Area 5 A - 900 Block,900
+900B,900 Block Team B,Area 5 B-  900 Block Team,Area 5 B - 900 Block,900
+1000A,1000 Block Team A,Area 6 A-  1000 Block Team,Area 6 A - 1000 Block,1000
+1000B,1000 Block Team B,Area 6 B-  1000 Block Team,Area 6 B - 1000 Block,1000
+sup,Expertise Support Team,Expertise Support Team (Roaming Support Team),Expertise Support,
+corA,Corridor Team A,State Street Corridor Team - A,State Street Corridor - A,cor
+corB,Corridor Team B,State Street Corridor Team - B,State Street Corridor - B,cor
+corC,Corridor Team C,State Street Corridor Team - C,State Street Corridor - C,cor
+corD,Corridor Team D,State Street Corridor Team - D,State Street Corridor - D,cor
