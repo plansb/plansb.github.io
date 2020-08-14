@@ -1,5 +1,5 @@
 ---
-title: "Planning for Santa Barbara's State Street Revitalization"
+title: "AIASB Charrette - State Street Revitalization"
 output: html_document
 editor_options: 
   chunk_output_type: console
