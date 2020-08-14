@@ -42,7 +42,7 @@ leaflet() %>%
   addLayersControl(
     baseGroups = c("Black & white", "Streets", "Satellite"),
     overlayGroups = c("Main Focus Areas", "Additional Focus Areas"),
-    options = layersControlOptions(collapsed = FALSE))
+    options = layersControlOptions(collapsed = T))
 ```
 
 ## Projects
