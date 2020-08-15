@@ -57,9 +57,9 @@ navbar:
   - text: Projects
     icon: fa-pencil
     href: index.html#projects
-  - text: Submit a Project
+  - text: Submit
     icon: fa-paper-plane
-    href: https://forms.gle/VzRhb2BT8q3tRLHy9
+    href: ./submit.html
   right:
   - text: About
     icon: fa-info-circle
