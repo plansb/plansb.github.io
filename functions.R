@@ -243,7 +243,7 @@ get_area_plys <- function(){
       popup_html = paste(
         "<strong>", area_name, "</strong><br>",
         glue("{projects_n} projects"),
-        ifelse(!is.na(projects_ul), projects_ul, ""),
+        ifelse(!is.na(projects_ul), projects_ul, "<br>"),
         glue("{teams_n} teams"),
         ifelse(!is.na(teams_ul), teams_ul, "")),
       label_html = paste(
