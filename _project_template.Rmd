@@ -2,62 +2,92 @@
 title: "`r params$project_name`"
 output: html_document
 params:
-  project_name: "Raised platform on street"
-  project_key: "raised-platform-on-street"
+  # project_name: "Raised platform on street"
+  # project_key: "raised-platform-on-street"
+  project_name: "3 Story Multi-family behind Staples above enclosed parking garage"
+  project_key: "3-story-multi-family-behind-staples-above-enclosed-parking-garage"
   #project_name: "Nice potted plants on street"
   #project_key: "project_nice-potted-plants-on-street"
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = F, warning = F, message = F)
 ```
 
-## Overview
-
 ```{r}
 source("functions.R")
 
-img_overview <- read_csv(images_csv) %>% 
-  filter(
-    project_key == params$project_key,
-    img_category == "overview") %>% 
-  pull(path)
+# params <- list(
+#   project_name = "3 Story Multi-family behind Staples above enclosed parking garage",
+#   project_key = "3-story-multi-family-behind-staples-above-enclosed-parking-garage")
 
-if (length(img_overview) == 1)
-  knitr::include_graphics(img_overview)
+p <- read_csv(projects_csv) %>% 
+  filter(project_key == params$project_key)
 ```
 
-## Image Gallery
+# {.tabset}
+
+## Overview
+
+`r fld2str("Description")`
+
+`r fld2str("Type of Vision")`
+
+`r fld2str("Design Standards Affected")`
+
+`r fld2str("If this proposal requires additional amendments to the downtown development standards, please justify those changes below.", "Design standards justification for amendment(s)")`
+
+`r fld2str("Specific Address (if applicable)", "Specific Address")`
+
+`r fld2str("Existing Land Use")`
+
+`r fld2str("Proposed Land Use")`
+
+```{r}
+d <- read_csv(files_csv) %>% 
+  filter(
+    project_key == params$project_key,
+    file_category == "image_overview")
+
+if (length(d) == 1)
+  include_graphics(d$path)
+```
+
+## Drawings
+
+```{r, results='asis'}
+read_csv(files_csv) %>% 
+  filter(
+    project_key == params$project_key,
+    file_category == "image_overview") %>% 
+  mutate(
+    li_md = glue("* [{fname}]({path})")) %>% 
+  pull(li_md)
+```
+
+## Images
 
 ```{r}
 library(bsplus)
 
-imgs <- read_csv(images_csv) %>% 
+paths <- read_csv(files_csv) %>% 
   filter(
     project_key == params$project_key,
-    img_category == "other") %>% 
-  mutate(
-    caption = basename(path) %>% fs::path_ext_remove()) %>% 
-  select(path, caption)
+    file_category == "images") %>% 
+  pull(path)
 
-carousel <- bs_carousel(id = "imgs_other", use_indicators = TRUE) %>% 
-  bs_append(
-    content = bs_carousel_image(src = imgs$path[1]),
-    caption = bs_carousel_caption(imgs$caption[1])) %>%
-  bs_append(
-    content = bs_carousel_image(src = imgs$path[2]),
-    caption = bs_carousel_caption(imgs$caption[2])) %>%
-  bs_append(
-    content = bs_carousel_image(src = imgs$path[3]),
-    caption = bs_carousel_caption(imgs$caption[3])) 
-carousel
+paths2carousel(paths)
 ```
 
-## Details
+## Sustainability
 
-```{r}
-project <- read_csv(projects_csv) %>% 
-  filter(project_key == params$project_key)
+`r fld2str("Cost Range")`
 
-datatable(project)
-```
+`r fld2str("Time frame for societal ROI")`
+
+`r fld2str("What kinds of multi-benefit, performance driven improvements would result from this project, with respect to resource management, energy efficiency, life cycle costs, avoided costs, etc?", "Mult-benefits")`
+
+`r fld2str("What specific ecosystem services will be created, expanded or supported as a result of this project?", "Ecosystem services")`
+

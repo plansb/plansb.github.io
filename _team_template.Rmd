@@ -4,26 +4,21 @@ output: html_document
 params:
   team_name: "400 Block Team A"
   team_key: "400A"
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = F, warning = F, message = F)
 ```
 
-## Overview
-
-```{r}
-source("functions.R")
-
-team <- read_csv(teams_csv) %>% 
-  filter(team_key == params$team_key)
-
-datatable(team)
-```
+# {.tabset}
 
 ## Projects
 
 ```{r}
+source("functions.R")
+
 projects <- read_csv(projects_csv) %>% 
   filter(team_key == params$team_key) %>% 
   left_join(
@@ -31,9 +26,37 @@ projects <- read_csv(projects_csv) %>%
       select(team_key, team_htm),
     by = "team_key") %>% 
   mutate(
-    Project = glue("<a href={project_htm}>{`Project Name`}</a>")) %>% 
+    Project = glue("<a href={project_htm}>{Title}</a>")) %>% 
   select(Area = area_name, Project)
 
 datatable(projects, escape = F)  
 ```
+
+## People
+
+```{r, results='asis'}
+people <- read_csv(people_csv) %>% 
+  filter(team_key == params$team_key)
+
+people %>% 
+  select(Role = role, Name = name, Email = email) %>% 
+  datatable()
+```
+
+## Representation
+
+```{r, results='asis'}
+source("functions.R")
+
+team <- read_csv(teams_csv) %>% 
+  filter(team_key == params$team_key)
+
+team %>% 
+  select(starts_with("n_")) %>% 
+  pivot_longer(everything(), names_to = "Group", values_to="Count") %>% 
+  mutate(
+    Group = str_replace(Group, "n_","")) %>% 
+  kable()
+```
+
 

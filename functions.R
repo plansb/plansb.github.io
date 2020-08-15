@@ -25,7 +25,7 @@ people_csv       <- here("data/people.csv")
 projects_csv     <- here("data/projects.csv")
 areas_csv        <- here("data/areas.csv")
 areas_kml        <- here("data/areas.kml")
-images_csv       <- here("data/images.csv")
+files_csv        <- here("data/files.csv")
 
 # functions ----
 
@@ -45,7 +45,7 @@ gsheet2tbl <- function(name = NULL, key = NULL, sheet = 0){
   read_csv(url)
 }
 
-digest_teams <- function(){
+import_teams <- function(){
   # weirdly, the Team Matrix google sheet downloads with cells as numbers,
   # so manually copied cells into Excel, saved as CSV, 
   # shifted non-numeric rows to right, shifted first column cells down, deleted numeric rows,
@@ -119,14 +119,14 @@ url_friendly <- function(x){
     str_to_lower()
 }
 
-digest_projects <- function(){
+import_projects <- function(){
   
   projects <- gsheet2tbl("projects") %>% 
     select(-starts_with("X")) %>% 
     rename(team_project = Team) %>% 
     rename(area_project = `Focus Area`) %>% 
     mutate(
-      project_key = map_chr(`Project Name`, url_friendly),
+      project_key = map_chr(`Title`, url_friendly),
       project_htm = glue("./project_{project_key}.html")) %>% 
     select(project_key, everything())
 
@@ -205,6 +205,7 @@ get_area_plys <- function(){
   area_lyrs <- map(st_layers(areas_kml)$name, function(x)
     read_sf(areas_kml, layer = x) %>% 
       mutate(layer = x))
+  
   area_plys <- do.call(rbind, area_lyrs) %>% 
     st_make_valid()  %>% 
     select(-layer) %>% 
@@ -215,50 +216,84 @@ get_area_plys <- function(){
       projects %>% 
         filter(!is.na(area_key)) %>% 
         mutate(
-          popup_html = glue("<li><a href='./{project_htm}'>{`Project Name`}</a></li>")) %>% 
+          project_li = glue("<li><a href='./{project_htm}'>{Title}</a></li>")) %>% 
         group_by(area_key) %>% 
         summarise(
-          popup_html = paste(
-            "<strong>", area_name, "</strong><br>",
+          projects_n    = n(),
+          projects_ul = paste(
             "<ul>\n", 
-            paste(popup_html, collapse='\n'), 
+            paste(project_li, collapse='\n'), 
             "\n</ul>")), 
-      by = "area_key") #%>% 
-  
-  area_plys <- area_plys %>% 
+      by = "area_key") %>% 
+    left_join(
+      teams %>% 
+        filter(!is.na(area_key)) %>% 
+        mutate(
+          team_li = glue("<li><a href='./{team_htm}'>{team_name}</a></li>")) %>% 
+        group_by(area_key) %>% 
+        summarise(
+          teams_n    = n(),
+          teams_ul = paste(
+            "<ul>\n", 
+            paste(team_li, collapse='\n'), 
+            "\n</ul>")), 
+      by = "area_key") %>% 
+    replace_na(list(projects_n = 0, teams_n = 0)) %>% 
     mutate(
-      popup_html = if_else(
-        is.na(popup_html),
-        paste("<strong>", area_name, "</strong><br>no projects yet"),
-        popup_html))
+      popup_html = paste(
+        "<strong>", area_name, "</strong><br>",
+        glue("{projects_n} projects"),
+        ifelse(!is.na(projects_ul), projects_ul, ""),
+        glue("{teams_n} teams"),
+        ifelse(!is.na(teams_ul), teams_ul, "")),
+      label_html = paste(
+        "<strong>", area_name, "</strong><br>",
+        glue("{projects_n} projects<br>"),
+        glue("{teams_n} teams")))
+
+#     
+#   
+#   area_plys <- area_plys %>% 
+#     mutate(
+#       popup_html = if_else(
+#         is.na(popup_html),
+#         paste("<strong>", area_name, "</strong><br>no projects yet"),
+#         popup_html))
 }
 
-digest_images <- function(){
+import_files <- function(){
   projects <- read_csv(projects_csv)
-  project_imgs <- projects %>% 
-    rename(img = `Image for overview`) %>% 
+  project_files <- projects %>% 
+    rename(file = `Image for overview`) %>% 
     mutate(
-      img_category = "overview") %>% 
-    select(project_key, img_category, img) %>% 
-    filter(!is.na(img)) %>% 
+      file_category = "image_overview") %>% 
+    select(project_key, file_category, file) %>% 
+    filter(!is.na(file)) %>% 
     bind_rows(
       projects %>% 
-        select(project_key, img = `Other images for gallery`) %>% 
-        filter(!is.na(img)) %>% 
-        separate_rows(img, sep = ",") %>% 
+        select(project_key, file = `Other images for gallery`) %>% 
+        filter(!is.na(file)) %>% 
+        separate_rows(file, sep = ",") %>% 
         mutate(
-          img_category = "other")) %>% 
+          file_category = "images")) %>% 
+    bind_rows(
+      projects %>% 
+        select(project_key, file = `Drawings and related documents`) %>% 
+        filter(!is.na(file)) %>% 
+        separate_rows(file, sep = ",") %>% 
+        mutate(
+          file_category = "drawings")) %>% 
     mutate(
-      gid   = str_replace(img, "https://drive.google.com/open\\?id=(.*)", "\\1") %>% 
+      gid   = str_replace(file, "https://drive.google.com/open\\?id=(.*)", "\\1") %>% 
         str_trim(),
       fname = map_chr(gid, function(x) {
         fname <- try(drive_get(as_id(x))$name)
         if (class(fname) == "try-error") return(NA)
         fname }),
       path  = ifelse(!is.na(fname), glue("images/{fname}"), NA))
-  write_csv(project_imgs, images_csv)
+  write_csv(project_files, files_csv)
   
-  pwalk(project_imgs, function(...) {
+  pwalk(project_files, function(...) {
     d <- tibble(...)
     if (!file.exists(d$path))
       drive_download(as_id(d$gid), d$path)
@@ -266,3 +301,35 @@ digest_images <- function(){
   
   # TODO: team images?
 }
+
+fld2str <- function(fld, lbl = fld){
+  # fld = "Project Proposal Description"; lbl = "Description"
+  str <- ""
+  #browser()
+  if(!fld %in% names(p)) stop(glue("fld not in project: {fld}"))
+  
+  if(!is.na(p[[fld]]) && nchar(p[[fld]]) > 0)
+    str <- glue("**{lbl}:** {p[[fld]]}")
+
+  str
+}
+
+paths2carousel <- function(paths){
+  
+  if (length(paths) == 0) 
+    return("")
+  
+  carousel <<- bs_carousel(id = "images_carousel", use_indicators = T)
+    
+  img2carousel <- function(path){
+    caption = basename(path) %>% path_ext_remove()
+    
+    carousel <<- carousel %>% bs_append(
+      content = bs_carousel_image(src = path),
+      caption = bs_carousel_caption(caption))
+  }
+  
+  walk(paths, img2carousel)
+  carousel
+}
+

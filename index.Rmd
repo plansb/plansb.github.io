@@ -17,6 +17,13 @@ source("functions.R")
 
 area_plys <- get_area_plys()
 
+main_areas <- area_plys %>% 
+      filter(layer == "Main Focus Areas")
+other_areas <- area_plys %>% 
+      filter(layer == "Additional Focus Areas")
+main_labels  <- main_areas$label_html
+other_labels <- other_areas$label_html
+
 leaflet() %>% 
   addProviderTiles(providers$Stamen.TonerLite, group = "Black & white",
     options = providerTileOptions(opacity = 0.5)) %>% 
@@ -26,19 +33,17 @@ leaflet() %>%
   addProviderTiles(providers$Esri.WorldImagery, group = "Satellite",
     options = providerTileOptions(opacity = 0.5)) %>% 
   addPolygons(
-    data = area_plys %>% 
-      filter(layer == "Main Focus Areas"),
+    data = main_areas,
     group = "Main Focus Areas",
     color     = ~color, opacity     = 0.9, weight = 0.5,
     fillColor = ~color, fillOpacity = 0.6,
-    label = ~area_name, popup = ~popup_html) %>%
+    label = lapply(main_labels, HTML), popup = ~popup_html) %>%
   addPolygons(
-    data = area_plys %>% 
-      filter(layer == "Additional Focus Areas"),
+    data = other_areas,
     group = "Additional Focus Areas",
     color     = ~color, opacity     = 0.6, weight = 0.5,
     fillColor = ~color, fillOpacity = 0.3,
-    label = ~area_name, popup = ~popup_html) %>%
+    label = lapply(other_labels, HTML), popup = ~popup_html) %>%
   addLayersControl(
     baseGroups = c("Black & white", "Streets", "Satellite"),
     overlayGroups = c("Main Focus Areas", "Additional Focus Areas"),
@@ -54,7 +59,7 @@ projects <- read_csv(projects_csv) %>%
       select(team_key, team_htm),
     by = "team_key") %>% 
   mutate(
-    Project = glue("<a href={project_htm}>{`Project Name`}</a>"), 
+    Project = glue("<a href={project_htm}>{Title}</a>"), 
     Team    = glue("<a href={team_htm}>{team_name}</a>")) %>% 
   select(Area = area_name, Project, Team)
 
