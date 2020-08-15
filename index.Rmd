@@ -24,7 +24,7 @@ other_areas <- area_plys %>%
 main_labels  <- main_areas$label_html
 other_labels <- other_areas$label_html
 
-leaflet() %>% 
+leaflet( width = "100%") %>% 
   addProviderTiles(providers$Stamen.TonerLite, group = "Black & white",
     options = providerTileOptions(opacity = 0.5)) %>% 
   addProviderTiles(
