@@ -51,7 +51,7 @@ d <- read_csv(files_csv) %>%
     project_key == params$project_key,
     file_category == "image_overview")
 
-if (length(d) == 1)
+if (nrow(d) == 1)
   include_graphics(d$path)
 ```
 

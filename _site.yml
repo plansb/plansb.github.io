@@ -66,8 +66,9 @@ navbar:
 output:
   html_document:
     theme: yeti
+    #css: "style.css"
     self_contained: no
-    lib_dir: libs
+    lib_dir: site_libs
     include:
       after_body: footer.html
 output_dir: '.'

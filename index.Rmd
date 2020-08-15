@@ -1,6 +1,6 @@
 ---
 title: "AIA Charrette 2020 for Santa Barbara"
-subtitle: "re invigorate, re invent, re imagine, re purpose"
+subtitle: "_re invigorate, re invent, re imagine, re purpose_"
 output: html_document
 editor_options: 
   chunk_output_type: console
