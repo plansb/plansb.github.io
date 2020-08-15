@@ -305,11 +305,14 @@ import_files <- function(){
 fld2str <- function(fld, lbl = fld){
   # fld = "Project Proposal Description"; lbl = "Description"
   str <- ""
-  #browser()
-  if(!fld %in% names(p)) stop(glue("fld not in project: {fld}"))
   
-  if(!is.na(p[[fld]]) && nchar(p[[fld]]) > 0)
-    str <- glue("**{lbl}:** {p[[fld]]}")
+  if(!fld %in% names(project)) stop(glue("fld not in project: {fld}"))
+  
+  if(!is.na(project[[fld]]) && nchar(project[[fld]]) > 0){
+    str <- glue("**{lbl}:** {project[[fld]]}")
+  } else {
+    str <- glue("**{lbl}:** <span style='color:gray;'>[empty]</span>")
+  }
 
   str
 }

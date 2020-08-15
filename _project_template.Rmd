@@ -2,12 +2,14 @@
 title: "`r params$project_name`"
 output: html_document
 params:
-  # project_name: "Raised platform on street"
-  # project_key: "raised-platform-on-street"
-  project_name: "3 Story Multi-family behind Staples above enclosed parking garage"
-  project_key: "3-story-multi-family-behind-staples-above-enclosed-parking-garage"
+  project_name: "nice-potted-plants-on-street"
+  project_key: "nice-potted-plants-on-street"
+  # project_name: "3 Story Multi-family behind Staples above enclosed parking garage"
+  # project_key: "3-story-multi-family-behind-staples-above-enclosed-parking-garage"
+  # project_name: "RSP Design Hub"
+  # project_key: "rsp-design-hub"
   #project_name: "Nice potted plants on street"
-  #project_key: "project_nice-potted-plants-on-street"
+  #project_key: "nice-potted-plants-on-street"
 editor_options: 
   chunk_output_type: console
 ---
@@ -16,14 +18,18 @@ editor_options:
 knitr::opts_chunk$set(echo = F, warning = F, message = F)
 ```
 
-```{r}
+```{r project}
 source("functions.R")
 
 # params <- list(
-#   project_name = "3 Story Multi-family behind Staples above enclosed parking garage",
-#   project_key = "3-story-multi-family-behind-staples-above-enclosed-parking-garage")
+# #   project_name = "RSP Design Hub",
+# #   project_key = "rsp-design-hub")
+#   project_name = "Raised platform on street",
+#   project_key = "raised-platform-on-street")
+  # project_name = "nice-potted-plants-on-street",
+  # project_key = "nice-potted-plants-on-street")
 
-p <- read_csv(projects_csv) %>% 
+project <<- read_csv(projects_csv) %>% 
   filter(project_key == params$project_key)
 ```
 
@@ -31,9 +37,19 @@ p <- read_csv(projects_csv) %>%
 
 ## Overview
 
+<!-- multi-column layout -->
+:::: {style="display: flex;"}
+
+<!-- 1st div on left -->
+::: {}
+
 `r fld2str("Description")`
 
 `r fld2str("Type of Vision")`
+
+`r fld2str("area_name", "Focus Area")`
+
+**Team:** [`r project$team_name`](`r glue("./team_{project$team_key}.html")`)
 
 `r fld2str("Design Standards Affected")`
 
@@ -45,7 +61,71 @@ p <- read_csv(projects_csv) %>%
 
 `r fld2str("Proposed Land Use")`
 
-```{r}
+:::
+
+<!-- 2nd div on right -->
+::: {} 
+
+```{r map}
+source("functions.R")
+
+area_plys <- get_area_plys()
+
+project_ply <- area_plys %>% 
+  filter(area_key == project$area_key)
+
+if (is.na(project$area_key)){
+    notproject_plys <- area_plys
+} else {
+  notproject_plys <- area_plys %>% 
+    filter(area_key != project$area_key)
+}
+
+notproject_labels <- notproject_plys$label_html
+
+map <- leaflet(width=300, height=300) %>% 
+  addProviderTiles(providers$Stamen.TonerLite, group = "Black & white",
+    options = providerTileOptions(
+      attribution = "", 
+      opacity = 0.5)) %>% 
+  addProviderTiles(
+    providers$CartoDB.Voyager, group = "Streets",
+    options = providerTileOptions(opacity = 0.8)) %>%
+  addProviderTiles(providers$Esri.WorldImagery, group = "Satellite",
+    options = providerTileOptions(opacity = 0.5)) %>% 
+  addPolygons(
+    data = notproject_plys,
+    group = "Other Areas",
+    color     = ~color, opacity     = 0.3, weight = 0.5,
+    fillColor = ~color, fillOpacity = 0.1,
+    label = lapply(notproject_labels, HTML), popup = ~popup_html) %>%
+  addLayersControl(
+    baseGroups = c("Black & white", "Streets", "Satellite"),
+    overlayGroups = c("Project Area", "Other Areas"),
+    options = layersControlOptions(collapsed = T))
+
+if (nrow(project_ply) ==1){
+  project_label <- project_ply$label_html
+  b             <- st_bbox(notproject_plys)  
+
+  map <- map %>% 
+    addPolygons(
+      data = project_ply,
+      group = "Project Area",
+      color     = ~color, opacity     = 0.9, weight = 2,
+      fillColor = ~color, fillOpacity = 0.6,
+      label = lapply(project_label, HTML), popup = ~popup_html) %>%
+    fitBounds(b[['xmin']], b[['ymin']], b[['xmax']], b[['ymax']])
+}
+map
+```
+
+:::
+
+<!-- end: multi-column layout -->
+:::: 
+
+```{r image_overview}
 d <- read_csv(files_csv) %>% 
   filter(
     project_key == params$project_key,
@@ -55,9 +135,9 @@ if (nrow(d) == 1)
   include_graphics(d$path)
 ```
 
-## Drawings
+## Documents
 
-```{r, results='asis'}
+```{r documents, results='asis'}
 read_csv(files_csv) %>% 
   filter(
     project_key == params$project_key,
@@ -69,16 +149,16 @@ read_csv(files_csv) %>%
 
 ## Images
 
-```{r}
+```{r image_gallery}
 library(bsplus)
 
-paths <- read_csv(files_csv) %>% 
+d <- read_csv(files_csv) %>% 
   filter(
     project_key == params$project_key,
-    file_category == "images") %>% 
-  pull(path)
+    file_category == "images")
 
-paths2carousel(paths)
+if (nrow(d) > 0)
+  paths2carousel(d$paths)
 ```
 
 ## Sustainability
