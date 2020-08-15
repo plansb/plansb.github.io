@@ -2,8 +2,10 @@
 title: "`r params$project_name`"
 output: html_document
 params:
-  project_name: "nice-potted-plants-on-street"
-  project_key: "nice-potted-plants-on-street"
+  project_name: "test"
+  project_key: "test-1"
+  # project_name: "nice-potted-plants-on-street"
+  # project_key: "nice-potted-plants-on-street"
   # project_name: "3 Story Multi-family behind Staples above enclosed parking garage"
   # project_key: "3-story-multi-family-behind-staples-above-enclosed-parking-garage"
   # project_name: "RSP Design Hub"
@@ -22,12 +24,11 @@ knitr::opts_chunk$set(echo = F, warning = F, message = F)
 source("functions.R")
 
 # params <- list(
-# #   project_name = "RSP Design Hub",
-# #   project_key = "rsp-design-hub")
+#   project_key = "test-1")
 #   project_name = "Raised platform on street",
 #   project_key = "raised-platform-on-street")
-  # project_name = "nice-potted-plants-on-street",
-  # project_key = "nice-potted-plants-on-street")
+#   project_name = "nice-potted-plants-on-street",
+#   project_key = "nice-potted-plants-on-street")
 
 project <<- read_csv(projects_csv) %>% 
   filter(project_key == params$project_key)
@@ -158,7 +159,7 @@ d <- read_csv(files_csv) %>%
     file_category == "images")
 
 if (nrow(d) > 0)
-  paths2carousel(d$paths)
+  paths2carousel(d$path)
 ```
 
 ## Sustainability

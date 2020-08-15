@@ -39,7 +39,7 @@ people <- read_csv(people_csv) %>%
   filter(team_key == params$team_key)
 
 people %>% 
-  select(Role = role, Name = name, Email = email) %>% 
+  select(Group = role, Name = name, Email = email) %>% 
   datatable()
 ```
 
