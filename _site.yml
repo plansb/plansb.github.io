@@ -4,6 +4,7 @@ navbar:
   type: inverse
   left:
   - text: Teams
+    icon: fa-users
     menu:
     - text: 1000 Block
       menu:
@@ -58,7 +59,8 @@ navbar:
     href: index.html#projects
   - text: Submit a Project
     icon: fa-paper-plane
-    href: https://forms.gle/VzRhb2BT8q3tRLHy9
+    #href: https://forms.gle/VzRhb2BT8q3tRLHy9
+    href: submit.html
   right:
   - text: About
     icon: fa-info-circle
