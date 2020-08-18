@@ -59,9 +59,22 @@ projects <- read_csv(projects_csv) %>%
       select(team_key, team_htm),
     by = "team_key") %>% 
   mutate(
-    Project = glue("<a href={project_htm}>{Title}</a>"), 
-    Team    = glue("<a href={team_htm}>{team_name}</a>")) %>% 
-  select(Area = area_name, Project, Team)
+    Submitted = as_datetime(
+      Timestamp, 
+      format = "%m/%d/%Y %H:%M:%S", tz="America/Los_Angeles"),
+    Project   = glue("<a href={project_htm}>{Title}</a>"), 
+    Team      = glue("<a href={team_htm}>{team_name}</a>")) %>% 
+  select(Area = area_name, Project, Team, Submitted)
 
-datatable(projects, escape = F)  
+datatable(
+  projects, 
+  escape = F,
+  plugins = 'natural', options = list(
+    dom = 't',
+    columnDefs = list(list(
+      type = 'natural', targets = "_all")))) %>% 
+    formatDate("Submitted", method = "toLocaleString")
+    # method = "toLocaleString",
+    # params = list("se", list(timeZone = "America/Los_Angeles")))
+
 ```

@@ -2,8 +2,8 @@
 title: "`r params$team_name`"
 output: html_document
 params:
-  team_name: "400 Block Team A"
-  team_key: "400A"
+  team_name: "Expertise Support Team"
+  team_key: "sup"
 editor_options: 
   chunk_output_type: console
 ---
@@ -19,6 +19,11 @@ knitr::opts_chunk$set(echo = F, warning = F, message = F)
 ```{r}
 source("functions.R")
 
+# params = list(
+#   team_name = "Expertise Support Team",
+#   team_key  = "sup")
+
+
 projects <- read_csv(projects_csv) %>% 
   filter(team_key == params$team_key) %>% 
   left_join(
@@ -26,10 +31,20 @@ projects <- read_csv(projects_csv) %>%
       select(team_key, team_htm),
     by = "team_key") %>% 
   mutate(
+    Submitted = as_datetime(
+      Timestamp, 
+      format = "%m/%d/%Y %H:%M:%S", tz="America/Los_Angeles"),
     Project = glue("<a href={project_htm}>{Title}</a>")) %>% 
-  select(Area = area_name, Project)
+  select(Area = area_name, Project, Submitted)
 
-datatable(projects, escape = F)  
+datatable(
+  projects, 
+  escape = F,
+  plugins = 'natural', options = list(
+    dom = 't',
+    columnDefs = list(list(
+      type = 'natural', targets = "_all")))) %>% 
+    formatDate("Submitted", method = "toLocaleString")
 ```
 
 ## People

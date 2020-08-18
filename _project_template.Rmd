@@ -31,7 +31,12 @@ source("functions.R")
 #   project_key = "nice-potted-plants-on-street")
 
 project <<- read_csv(projects_csv) %>% 
-  filter(project_key == params$project_key)
+  filter(project_key == params$project_key) %>%
+  mutate(
+    Submitted = as_datetime(
+      Timestamp, 
+      format = "%m/%d/%Y %H:%M:%S", tz="America/Los_Angeles")    
+  )
 ```
 
 # {.tabset}
@@ -61,6 +66,8 @@ project <<- read_csv(projects_csv) %>%
 `r fld2str("Existing Land Use")`
 
 `r fld2str("Proposed Land Use")`
+
+`r fld2str("Submitted")`
 
 :::
 

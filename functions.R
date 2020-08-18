@@ -4,13 +4,13 @@ if (!require(librarian))
 library(librarian)
 shelf(
   # utility
-  glue,here,fs,glue,stringr,yaml,googledrive,
+  glue,here,fs,glue,lubridate,stringr,yaml,googledrive,
   # data
   readr,dplyr,tidyr,purrr,
   # map
   sf,leaflet,
   # report
-  knitr,rmarkdown,DT,htmltools)
+  knitr,rmarkdown,rstudio/DT,htmltools)
 
 # paths ----
 
