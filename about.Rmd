@@ -6,7 +6,7 @@ title: "About"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-PlanSB is the “Design Hub” for the AIASB 2020 Design Charrette. The purpose of the Charrette is to Reinvigorate, Reinvent, Reimagine, and Repurpose our Downtown with housing, energy, and life. The Charrette consists of design teams of volunteer architects, landscape architects, planners, engineers, and other experts who are applying their talent and expertise to envision a future Downtown Santa Barbara.
+PlanSB is the “Design Hub” for the \href{http://aiasb.com/design-charrette-2020/}{AIASB 2020 Design Charrette}. The purpose of the Charrette is to Reinvigorate, Reinvent, Reimagine, and Repurpose our Downtown with housing, energy, and life. The Charrette consists of design teams of volunteer architects, landscape architects, planners, engineers, and other experts who are applying their talent and expertise to envision a future Downtown Santa Barbara.
 
 The PlanSB Design Hub is created and managed by Real Site Plans and EcoQuants. 
 
