@@ -10,4 +10,4 @@ PlanSB is the “Design Hub” for the [AIASB 2020 Design Charrette](http://aias
 
 The PlanSB Design Hub is created and managed by [Real Site Plans](http://realsiteplans.com/) and [EcoQuants](https://ecoquants.com/). 
 
-For support with the Design Hub, please contact Ben Werner.
+For support with the Design Hub, please contact [Ben Werner](mailto:ben@realsiteplans.com).
