@@ -16,7 +16,8 @@ shelf(
 
 gsheet_keys <- list(
   projects = "1D0Zi7T85hTB-56G_A6VpHIAxDDOs-PgVi6SwbAbkem8",
-  teams    = "12_bBf09mjxTgRoggEIAI81isTHoHWzwJaNLpEhBXbeM")
+  #teams    = "12_bBf09mjxTgRoggEIAI81isTHoHWzwJaNLpEhBXbeM")
+  teams    = "1KkbK5PJ8JaEyBvnhp0ML-QPt0mcgSehYSX36qhhVhns")
 
 teams_matrix_csv <- here("data/teams_matrix.csv")
 teams_lookup_csv <- here("data/teams_lookup.csv")
@@ -52,7 +53,9 @@ import_teams <- function(){
   # saved as data/teams_matrix.csv
   
   # create "long" form of teams_csv from "wide" teams_matrix
-  d <- read_csv(teams_matrix_csv)
+  #d <- read_csv(teams_matrix_csv)
+  d <- gsheet2tbl("teams")
+  write_csv(d, teams_matrix_csv)
   
   names(d)[1] <- "role"
   
@@ -220,7 +223,9 @@ get_area_plys <- function(){
       projects %>% 
         filter(!is.na(area_key)) %>% 
         mutate(
+          area_key   = as.character(area_key), 
           project_li = glue("<li><a href='./{project_htm}'>{`Project Title`}</a></li>")) %>% 
+        #select(project_key, area_key)
         group_by(area_key) %>% 
         summarise(
           projects_n    = n(),
@@ -233,6 +238,7 @@ get_area_plys <- function(){
       teams %>% 
         filter(!is.na(area_key)) %>% 
         mutate(
+          area_key   = as.character(area_key), 
           team_li = glue("<li><a href='./{team_htm}'>{team_name}</a></li>")) %>% 
         group_by(area_key) %>% 
         summarise(
@@ -267,12 +273,22 @@ get_area_plys <- function(){
 
 import_files <- function(){
   projects <- read_csv(projects_csv)
+  
   project_files <- projects %>% 
     rename(file = `Image for overview`) %>% 
     mutate(
       file_category = "image_overview") %>% 
     select(project_key, file_category, file) %>% 
-    filter(!is.na(file)) %>% 
+    filter(!is.na(file))
+  
+  
+  if (nrow(project_files) == 0){
+    write_csv(project_files, files_csv)
+    return()
+  }
+  
+    
+  project_files <- project_files %>%     
     bind_rows(
       projects %>% 
         select(project_key, file = `Other images for gallery`) %>% 
@@ -297,13 +313,15 @@ import_files <- function(){
       path  = ifelse(!is.na(fname), glue("images/{fname}"), NA))
   write_csv(project_files, files_csv)
   
+  # download if missing
   pwalk(project_files, function(...) {
     d <- tibble(...)
     if (!file.exists(d$path))
       drive_download(as_id(d$gid), d$path)
   })
   
-  # TODO: team images?
+  # TODO: delete if missing
+  # TODO: seperate files/ from images/?
 }
 
 fld2str <- function(fld, lbl = fld){

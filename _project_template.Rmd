@@ -2,8 +2,8 @@
 title: "`r params$project_name`"
 output: html_document
 params:
-  project_name: "test"
-  project_key: "test-1"
+  project_name: "Stakeholder"
+  project_key: "stakeholder"
   # project_name: "nice-potted-plants-on-street"
   # project_key: "nice-potted-plants-on-street"
   # project_name: "3 Story Multi-family behind Staples above enclosed parking garage"
@@ -24,6 +24,7 @@ knitr::opts_chunk$set(echo = F, warning = F, message = F)
 source("functions.R")
 
 # params <- list(
+#   project_key = "stakeholder")
 #   project_key = "test-1")
 #   project_name = "Raised platform on street",
 #   project_key = "raised-platform-on-street")
@@ -146,13 +147,17 @@ if (nrow(d) == 1)
 ## Documents
 
 ```{r documents, results='asis'}
-read_csv(files_csv) %>% 
+docs <- read_csv(files_csv) %>% 
   filter(
     project_key == params$project_key,
-    file_category == "image_overview") %>% 
+    file_category == "image_overview")
+
+if (nrow(docs) > 0){
+  docs %>% 
   mutate(
     li_md = glue("* [{fname}]({path})")) %>% 
   pull(li_md)
+}
 ```
 
 ## Images

@@ -3,7 +3,7 @@ source("functions.R")
 
 # digest data ----
 import_teams()
-import_projects(use_cache = T)
+import_projects(use_cache = F)
 import_files()
 update_teams_menu()
 

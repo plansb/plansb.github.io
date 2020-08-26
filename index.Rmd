@@ -10,9 +10,7 @@ editor_options:
 knitr::opts_chunk$set(echo = F, warning = F, message = F)
 ```
 
-**NOTE**: The current projects displayed are only **TEST** submissions to confirm functionality of the website.
-
-Please [Submit](./submit.html) your own and the website will be manually regenerated  with the TEST data removed and populated with yours here next time (~ next day).
+Please [Submit](./submit.html) your own project proposal and the website will be manually regenerated (~ next day) and populated with it here.
 
 ## Map
 
@@ -66,7 +64,7 @@ projects <- read_csv(projects_csv) %>%
     Submitted = as_datetime(
       Timestamp, 
       format = "%m/%d/%Y %H:%M:%S", tz="America/Los_Angeles"),
-    Project   = glue("<a href={project_htm}>{Title}</a>"), 
+    Project   = glue("<a href={project_htm}>{`Project Title`}</a>"), 
     Team      = glue("<a href={team_htm}>{team_name}</a>")) %>% 
   select(Area = area_name, Project, Team, Submitted)
 
