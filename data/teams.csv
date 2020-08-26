@@ -1,18 +1,18 @@
-team_key,team_name,area_key,n_Architects,n_Community Stakeholders,n_Community Young People,n_Emerging Architectural Professionals,"n_Engineers  (Civil, Structural)",n_Landscape Architects,n_Planners,n_ALL,team_htm
-400A,400 Block Team A,400,2,2,1,2,1,1,1,10,./team_400A.html
-400B,400 Block Team B,400,3,1,2,2,0,1,0,9,./team_400B.html
-500A,500 Block Team A,500,2,2,1,2,1,1,1,10,./team_500A.html
-500B,500 Block Team B,500,2,1,2,3,0,1,0,9,./team_500B.html
-600A,600 Block Team A,600,3,1,1,2,1,1,1,10,./team_600A.html
-600B,600 Block Team B,600,3,1,2,2,0,1,0,9,./team_600B.html
-700A,700/800 Block Team A,700,2,1,2,2,1,1,1,10,./team_700A.html
-700B,700/800 Block Team B,700,3,2,1,2,0,1,0,9,./team_700B.html
-900A,900 Block Team A,900,2,1,2,1,1,1,1,9,./team_900A.html
-900B,900 Block Team B,900,3,2,1,3,0,0,0,9,./team_900B.html
-1000A,1000 Block Team A,1000,2,1,2,2,0,1,1,9,./team_1000A.html
-1000B,1000 Block Team B,1000,2,2,2,2,0,0,0,8,./team_1000B.html
-sup,Expertise Support Team,NA,0,2,0,0,0,0,0,2,./team_sup.html
-corA,Corridor Team A,cor,5,1,1,2,1,1,1,12,./team_corA.html
-corB,Corridor Team B,cor,4,1,1,2,0,1,1,10,./team_corB.html
-corC,Corridor Team C,cor,5,1,1,2,0,1,1,11,./team_corC.html
-corD,Corridor Team D,cor,5,2,1,2,0,1,1,12,./team_corD.html
+team_key,team_name,area_key,n_Braulio Casas (bcasas@appleton-architects.com)   Morgan Solorio (mlsolori@gmail.com)  John P. Margolis (jmargolis@appleton-architects.com)  Ken Mineau (kmineau@appleton-architects.com)  Kent Mixon (kent@andrulaitismixon.com),n_David Taylor-Schott (taylorschott@gmail.com)  Isaac Hendricks (IHENDRICKS@APPLETON-ARCHITECTS.COM),n_debbie rudd (dlrudd@rrmdesign.com),n_Debbie Tilley (Debbiettd@gmail.com),n_Justin (jm@arcadiastudio.com),n_Megan Saunders (Megansaunders@ucsb.edu),n_Melissa Hygelund (melissa.hygelund@gmail.com),n_ALL,team_htm
+400A,400 Block Team A,400,2,2,1,1,1,1,2,10,./team_400A.html
+400B,400 Block Team B,400,3,2,0,0,1,2,1,9,./team_400B.html
+500A,500 Block Team A,500,2,2,1,1,1,1,2,10,./team_500A.html
+500B,500 Block Team B,500,2,3,0,0,1,2,1,9,./team_500B.html
+600A,600 Block Team A,600,3,2,1,1,1,1,1,10,./team_600A.html
+600B,600 Block Team B,600,4,2,1,0,1,2,0,10,./team_600B.html
+700A,700/800 Block Team A,700,2,2,1,1,1,2,1,10,./team_700A.html
+700B,700/800 Block Team B,700,3,2,1,0,1,1,2,10,./team_700B.html
+900A,900 Block Team A,900,2,1,1,1,1,2,1,9,./team_900A.html
+900B,900 Block Team B,900,3,3,0,0,0,1,2,9,./team_900B.html
+1000A,1000 Block Team A,1000,2,2,1,0,1,2,1,9,./team_1000A.html
+1000B,1000 Block Team B,1000,2,2,0,0,0,2,2,8,./team_1000B.html
+sup,Expertise Support Team,NA,0,0,0,0,0,0,2,2,./team_sup.html
+corA,Corridor Team A,cor,NA,NA,NA,NA,NA,NA,NA,NA,./team_corA.html
+corB,Corridor Team B,cor,4,2,1,0,1,1,1,10,./team_corB.html
+corC,Corridor Team C,cor,5,2,1,0,1,1,1,11,./team_corC.html
+corD,Corridor Team D,cor,5,2,1,0,1,1,2,12,./team_corD.html

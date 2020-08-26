@@ -18,7 +18,11 @@ render_project <- function(key, name, htm){
     output_file = htm)}
 
 read_csv(projects_csv) %>%
-  select(key = project_key, name = `Project Title`, htm = project_htm) %>%
+  mutate(
+    project_title = `Project Title` %>% 
+      str_replace_all('"', "'")) %>% 
+  select(
+    key = project_key, name = project_title, htm = project_htm) %>%
   pwalk(render_project)
 
 # render teams ----

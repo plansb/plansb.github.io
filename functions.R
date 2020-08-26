@@ -43,7 +43,8 @@ gsheet2tbl <- function(name = NULL, key = NULL, sheet = 0){
   }
   url <- glue("https://docs.google.com/spreadsheets/d/{key}/gviz/tq?tqx=out:csv&sheet={sheet}")
 
-  read_csv(url)
+  read_csv(url) %>% 
+    select(-starts_with("X"))
 }
 
 import_teams <- function(){
@@ -128,7 +129,6 @@ import_projects <- function(use_cache = F){
     return(projects_csv)
   
   projects <- gsheet2tbl("projects") %>% 
-    select(-starts_with("X")) %>% 
     rename(team_project = Team) %>% 
     rename(area_project = `Focus Area`) %>% 
     mutate(
@@ -272,37 +272,31 @@ get_area_plys <- function(){
 }
 
 import_files <- function(){
-  projects <- read_csv(projects_csv)
-  
-  project_files <- projects %>% 
-    rename(file = `Image for overview`) %>% 
-    mutate(
-      file_category = "image_overview") %>% 
-    select(project_key, file_category, file) %>% 
-    filter(!is.na(file))
-  
-  
-  if (nrow(project_files) == 0){
-    write_csv(project_files, files_csv)
-    return()
+
+  get_files <- function(fld_file, file_category){
+    
+    read_csv(projects_csv) %>% 
+      rename(
+        file = !!fld_file) %>% 
+      mutate(
+        file_category = !!file_category,
+        file          = as.character(file)) %>% 
+      select(project_key, file_category, file) %>% 
+      filter(!is.na(file)) %>% 
+      { if (nrow(.) > 0){
+        separate_rows(., file, sep = ",") %>% 
+          mutate(
+            file = str_trim(file))
+        } else {.} }
   }
   
-    
-  project_files <- project_files %>%     
-    bind_rows(
-      projects %>% 
-        select(project_key, file = `Other images for gallery`) %>% 
-        filter(!is.na(file)) %>% 
-        separate_rows(file, sep = ",") %>% 
-        mutate(
-          file_category = "images")) %>% 
-    bind_rows(
-      projects %>% 
-        select(project_key, file = `Drawings and related documents`) %>% 
-        filter(!is.na(file)) %>% 
-        separate_rows(file, sep = ",") %>% 
-        mutate(
-          file_category = "drawings")) %>% 
+  image_overview <- get_files("Image for overview"            , "image_overview")
+  images         <- get_files("Other images for gallery"      , "images")
+  documents      <- get_files("Drawings and related documents", "documents")
+  
+  project_files <- image_overview %>%     
+    bind_rows(images) %>% 
+    bind_rows(documents) %>% 
     mutate(
       gid   = str_replace(file, "https://drive.google.com/open\\?id=(.*)", "\\1") %>% 
         str_trim(),
