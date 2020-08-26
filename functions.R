@@ -119,14 +119,17 @@ url_friendly <- function(x){
     str_to_lower()
 }
 
-import_projects <- function(){
+import_projects <- function(use_cache = F){
+  
+  if (use_cache == T && file.exists(projects_csv))
+    return(projects_csv)
   
   projects <- gsheet2tbl("projects") %>% 
     select(-starts_with("X")) %>% 
     rename(team_project = Team) %>% 
     rename(area_project = `Focus Area`) %>% 
     mutate(
-      project_key = map_chr(`Title`, url_friendly),
+      project_key = map_chr(`Project Title`, url_friendly),
       project_htm = glue("./project_{project_key}.html")) %>% 
     select(project_key, everything())
 
@@ -148,6 +151,7 @@ import_projects <- function(){
     select(-area_project)
   
   write_csv(projects, projects_csv)
+  projects_csv
 }
 
 update_teams_menu <- function(){
@@ -216,7 +220,7 @@ get_area_plys <- function(){
       projects %>% 
         filter(!is.na(area_key)) %>% 
         mutate(
-          project_li = glue("<li><a href='./{project_htm}'>{Title}</a></li>")) %>% 
+          project_li = glue("<li><a href='./{project_htm}'>{`Project Title`}</a></li>")) %>% 
         group_by(area_key) %>% 
         summarise(
           projects_n    = n(),

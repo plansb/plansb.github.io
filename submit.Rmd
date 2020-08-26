@@ -10,6 +10,6 @@ Propose a project by filling out the following:
 
 - [Project - Google Form](https://docs.google.com/forms/d/e/1FAIpQLScJYmipt-UFaPbLfluu8idM9qHTyLDSMFJLic_VXIj6qni6tQ/viewform){target="_blank"}
 
-The next time this website gets regenerated (for now manually; eventually every hour), the project will populate on the site (unless there's an issue with processing).
+The next time this website gets regenerated (for now manually; eventually automatically), the project will populate on the site (unless there's an issue with processing).
 
 Thank you for participating!

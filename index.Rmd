@@ -10,6 +10,10 @@ editor_options:
 knitr::opts_chunk$set(echo = F, warning = F, message = F)
 ```
 
+**NOTE**: The current projects displayed are only **TEST** submissions to confirm functionality of the website.
+
+Please [Submit](./submit.html) your own and the website will be manually regenerated  with the TEST data removed and populated with yours here next time (~ next day).
+
 ## Map
 
 ```{r}

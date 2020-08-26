@@ -3,7 +3,7 @@ source("functions.R")
 
 # digest data ----
 import_teams()
-import_projects()
+import_projects(use_cache = T)
 import_files()
 update_teams_menu()
 
@@ -18,7 +18,7 @@ render_project <- function(key, name, htm){
     output_file = htm)}
 
 read_csv(projects_csv) %>%
-  select(key = project_key, name = Title, htm = project_htm) %>%
+  select(key = project_key, name = `Project Title`, htm = project_htm) %>%
   pwalk(render_project)
 
 # render teams ----

@@ -49,7 +49,7 @@ project <<- read_csv(projects_csv) %>%
 <!-- 1st div on left -->
 ::: {}
 
-`r fld2str("Description")`
+`r fld2str("Project Description")`
 
 `r fld2str("Type of Vision")`
 
