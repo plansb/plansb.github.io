@@ -19,7 +19,7 @@ gsheet_keys <- list(
   #teams    = "12_bBf09mjxTgRoggEIAI81isTHoHWzwJaNLpEhBXbeM")
   teams    = "1KkbK5PJ8JaEyBvnhp0ML-QPt0mcgSehYSX36qhhVhns")
 
-teams_matrix_csv <- here("data/teams_matrix.csv")
+#teams_matrix_csv <- here("data/teams_matrix.csv")
 teams_lookup_csv <- here("data/teams_lookup.csv")
 teams_csv        <- here("data/teams.csv")
 people_csv       <- here("data/people.csv")
@@ -55,37 +55,46 @@ import_teams <- function(){
   
   # create "long" form of teams_csv from "wide" teams_matrix
   #d <- read_csv(teams_matrix_csv)
-  d <- gsheet2tbl("teams")
-  write_csv(d, teams_matrix_csv)
+  people <- gsheet2tbl("teams")
+  #write_csv(d, teams_matrix_csv)
+  # 
+  # names(d)[1] <- "role"
+  # 
+  # people <- d %>% 
+  #   # wide to long
+  #   pivot_longer(-role, names_to = "team", values_to = "people") %>% 
+  #   mutate(
+  #     # replace newlines with space and trim
+  #     role   = str_replace_all(role, "\\n", " ") %>% str_trim(),
+  #     team   = str_replace_all(team, "\\n", " ") %>% str_trim(),
+  #     people = str_replace_all(people, "\\n", " ") %>% str_trim(),
+  #     # swap spaces after ) with people separator as comma
+  #     people = str_replace_all(people, "(.*?\\))(\\s+)([A-Z]+.*?)", "\\1,\\3")) %>% 
+  #   # separate people across rows to individual person
+  #   separate_rows(people, sep = ",") %>% 
+  #   rename(person = people) %>% 
+  #   mutate(
+  #     email = str_replace(person, "(.*)\\((.*)\\)", "\\2") %>% str_trim(),
+  #     name  = str_replace(person, "(.*)\\((.*)\\)", "\\1") %>% str_trim()) %>% 
+  #   filter(!is.na(person)) %>% 
+  #   select(team, role, name, email) %>% 
+  #   arrange(team, role, name, email)
   
-  names(d)[1] <- "role"
+  teams_lookup <- read_csv(teams_lookup_csv) %>% 
+    select(-team_project)
   
-  people <- d %>% 
-    # wide to long
-    pivot_longer(-role, names_to = "team", values_to = "people") %>% 
-    mutate(
-      # replace newlines with space and trim
-      role   = str_replace_all(role, "\\n", " ") %>% str_trim(),
-      team   = str_replace_all(team, "\\n", " ") %>% str_trim(),
-      people = str_replace_all(people, "\\n", " ") %>% str_trim(),
-      # swap spaces after ) with people separator as comma
-      people = str_replace_all(people, "(.*?\\))(\\s+)([A-Z]+.*?)", "\\1,\\3")) %>% 
-    # separate people across rows to individual person
-    separate_rows(people, sep = ",") %>% 
-    rename(person = people) %>% 
-    mutate(
-      email = str_replace(person, "(.*)\\((.*)\\)", "\\2") %>% str_trim(),
-      name  = str_replace(person, "(.*)\\((.*)\\)", "\\1") %>% str_trim()) %>% 
-    filter(!is.na(person)) %>% 
-    select(team, role, name, email) %>% 
-    arrange(team, role, name, email)
+  people <- people %>% 
+    left_join(
+      teams_lookup %>% 
+        select(-team_matrix),
+      by = "team_name")
   
   teams <- people %>% 
-    group_by(team, role) %>% 
+    group_by(team_name, role) %>% 
     summarize(n = n())  %>% 
     bind_rows(
       people %>% 
-        group_by(team) %>% 
+        group_by(team_name) %>% 
         summarize(n = n()) %>% 
         mutate(role = "ALL")) %>%
     pivot_wider(
@@ -94,24 +103,13 @@ import_teams <- function(){
   
   # teams_old -> teams_new -- manually created teams_new field
   # write_csv(teams, teams_lookup_csv)
-  teams_lookup <- read_csv(teams_lookup_csv) %>% 
-    select(-team_project)
   
   teams <- teams_lookup %>% 
     left_join(
-      teams %>% 
-        rename(team_matrix = team),
-      by = "team_matrix") %>% 
-    select(-team_matrix) %>% 
+      teams,
+      by = "team_name") %>% 
     mutate(
       team_htm = glue("./team_{team_key}.html"))
-  
-  people <- teams_lookup %>% 
-    left_join(
-      people %>% 
-        rename(team_matrix = team),
-      by = "team_matrix") %>% 
-    select(-team_matrix)
     
   write_csv(teams , teams_csv)
   write_csv(people, people_csv)
