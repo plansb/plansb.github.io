@@ -1,10 +1,10 @@
 team_key,team_name,team_matrix,area_key,n_Architects,n_Community Stakeholders,n_Community Young People,n_Emerging Architectural Professionals,n_Landscape Architects,n_Planners,"n_Engineers (Civil, Structural)",n_ALL,team_htm
 400A,400 Block Team A,Area 1 A-  400 Block Team,400,2,2,1,2,1,1,1,10,./team_400A.html
-400B,400 Block Team B,Area 1 B-  400 Block Team,400,3,1,2,2,1,0,0,9,./team_400B.html
+400B,400 Block Team B,Area 1 B-  400 Block Team,400,3,1,2,2,2,1,0,11,./team_400B.html
 500A,500 Block Team A,Area 2 A-  500 Block Team,500,2,2,1,2,1,1,1,10,./team_500A.html
-500B,500 Block Team B,Area 2 B-  500 Block Team,500,2,1,2,3,1,0,0,9,./team_500B.html
+500B,500 Block Team B,Area 2 B-  500 Block Team,500,3,1,2,3,1,0,0,10,./team_500B.html
 600A,600 Block Team A,Area 3 A- 600 Block Team,600,3,1,1,2,1,1,1,10,./team_600A.html
-600B,600 Block Team B,Area 3 B- 600 Block Team,600,3,1,2,2,1,0,0,9,./team_600B.html
+600B,600 Block Team B,Area 3 B- 600 Block Team,600,4,0,2,2,1,1,0,10,./team_600B.html
 700A,700/800 Block Team A,Area 4 A-  700/800 Block Team,700,2,1,2,2,1,1,1,10,./team_700A.html
 700B,700/800 Block Team B,Area 4 B-  700/800 Block Team,700,3,2,1,2,1,0,0,9,./team_700B.html
 900A,900 Block Team A,Area 5 A-  900 Block Team,900,2,1,2,1,1,1,1,9,./team_900A.html

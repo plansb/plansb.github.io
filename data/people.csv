@@ -17,7 +17,9 @@ team_name,role,name,email,is_team_leader,team_key,area_key
 400 Block Team B,Community Young People,Yichen Li,yichenli@ucsb.edu,NA,400B,400
 400 Block Team B,Emerging Architectural Professionals,Elizabeth Yee,lizbeckyee@gmail.com,NA,400B,400
 400 Block Team B,Emerging Architectural Professionals,Ruchita Chandsarkar,rchandsarkar@gmail.com,NA,400B,400
-400 Block Team B,Landscape Architects,Guillermo Gonzalez / Crista Sanders,gg@bluestudio.design,NA,400B,400
+400 Block Team B,Landscape Architects,Guillermo Gonzalez,gg@bluestudio.design,NA,400B,400
+400 Block Team B,Landscape Architects,Crista Sanders,crista@bluestudio.design,NA,400B,400
+400 Block Team B,Planners,Ken Marshall,kmarshall@dudek.com,NA,400B,400
 500 Block Team A,Architects,Keith Rivera,acme.arch@cox.net,NA,500A,500
 500 Block Team A,Architects,Robin Donaldson,rdonaldson@shubindonaldson.com,NA,500A,500
 500 Block Team A,Community Stakeholders,Jodi Sutton,jsutton@designarc.net,NA,500A,500
@@ -30,6 +32,7 @@ team_name,role,name,email,is_team_leader,team_key,area_key
 500 Block Team A,Planners,Gelare Macon,gmacon@flowersassoc.com,NA,500A,500
 500 Block Team B,Architects,Alayna Fraser,alayna@bbird.com,NA,500B,500
 500 Block Team B,Architects,Matthew Gries,mgries@designarc.net,NA,500B,500
+500 Block Team B,Architects,Rod Britton,rbritton40@cox.net,NA,500B,500
 500 Block Team B,Community Stakeholders,Michelle Zimney,michelle@inbalancegreen.com,NA,500B,500
 500 Block Team B,Community Young People,Chanelle Nguyen,Chanelle@ucsb.edu,NA,500B,500
 500 Block Team B,Community Young People,Tori Smolinski,t.smolinski.preservation@gmail.com,NA,500B,500
@@ -50,12 +53,13 @@ team_name,role,name,email,is_team_leader,team_key,area_key
 600 Block Team B,Architects,Don Nulty,don@donnulty.com,NA,600B,600
 600 Block Team B,Architects,Ellen Bildsten,ellen@sb-designgroup.com,NA,600B,600
 600 Block Team B,Architects,Serena McClintick,smcclintick@harrisondesign.com,NA,600B,600
-600 Block Team B,Community Stakeholders,Barrett Reed,barrett@miramarsb.com,NA,600B,600
+600 Block Team B,Architects,Amy Gallina,agallina@abdesignstudioinc.com,NA,600B,600
 600 Block Team B,Community Young People,Ashley Taylor,ashley@aiasb.com,NA,600B,600
 600 Block Team B,Community Young People,Daniele Burns,burnsdan@usc.edu,NA,600B,600
 600 Block Team B,Emerging Architectural Professionals,Anna Neubauer,aneubauer@abdesignstudioinc.com,NA,600B,600
 600 Block Team B,Emerging Architectural Professionals,Justin Harmon,justin@dmhaa.com,NA,600B,600
-600 Block Team B,Landscape Architects,Katie Klein,katie@parryi.com,NA,600B,600
+600 Block Team B,Landscape Architects,Leland Walmsley,leland@evergreen-sb.com,NA,600B,600
+600 Block Team B,Planners,Tony Tomasello,actomasello@rrmdesign.com,NA,600B,600
 700/800 Block Team A,Architects,DENNIS WHELAN,DENNISMWHELAN@GMAIL.COM,NA,700A,700
 700/800 Block Team A,Architects,Stephanie Poole,stephaniedpoole.aia@gmail.com,NA,700A,700
 700/800 Block Team A,Community Stakeholders,Isabel Larriba,isalarriba@gmail.com,NA,700A,700
