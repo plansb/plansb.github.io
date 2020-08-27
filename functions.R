@@ -350,5 +350,8 @@ paths2carousel <- function(paths){
   carousel
 }
 
+# for `form_column` in `fields to website` sheet 
+#   [PlanSB.org Project (Responses) - Google Sheets](https://docs.google.com/spreadsheets/d/1D0Zi7T85hTB-56G_A6VpHIAxDDOs-PgVi6SwbAbkem8/edit#gid=2019788311)
+#
 # cat(paste(LETTERS, collapse="\n"))
 # cat(purrr::map_chr(LETTERS, function(x) glue::glue("A{x}\n", .trim=F)))
