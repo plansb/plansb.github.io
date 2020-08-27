@@ -350,3 +350,5 @@ paths2carousel <- function(paths){
   carousel
 }
 
+# cat(paste(LETTERS, collapse="\n"))
+# cat(purrr::map_chr(LETTERS, function(x) glue::glue("A{x}\n", .trim=F)))
