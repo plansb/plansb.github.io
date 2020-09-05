@@ -288,13 +288,18 @@ import_files <- function(){
         } else {.} }
   }
   
-  image_overview <- get_files("Image for overview"            , "image_overview")
-  images         <- get_files("Other images for gallery"      , "images")
-  documents      <- get_files("Drawings and related documents", "documents")
+  image_overview <- get_files("Image for overview"                         , "image_overview")
+  images         <- get_files("Other images for gallery"                   , "images")
+  documents      <- get_files("Drawings and related documents"             , "documents")
+  references     <- get_files("Reference files, inspirational images, etc.", "references") 
+  spatial        <- get_files("If a new AREA boundary is required to contextualize this submittal, upload a reference here (image, pdf or shape file accepted)", 
+                              "spatial") 
   
   project_files <- image_overview %>%     
     bind_rows(images) %>% 
     bind_rows(documents) %>% 
+    bind_rows(references) %>% 
+    bind_rows(spatial) %>% 
     mutate(
       gid   = str_replace(file, "https://drive.google.com/open\\?id=(.*)", "\\1") %>% 
         str_trim(),
