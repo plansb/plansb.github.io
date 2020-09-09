@@ -52,7 +52,7 @@ project <<- read_csv(projects_csv) %>%
 
 **Team:** [`r project$team_name`](`r glue("./team_{project$team_key}.html")`)
 
-`r fld2str("Design Standards Affected")`
+<!--`r fld2str("Design Standards Affected")`-->
 
 `r fld2str("Existing Land Use")`
 
@@ -123,11 +123,9 @@ map
 
 `r fld2str("Specific Address (if applicable)", "Specific Address")`
 
-`r fld2str("area_name", "Focus Area")`
+<!--`r fld2str("Add New Area or Boundary to Map")`-->
 
-`r fld2str("Add New Area or Boundary to Map")`
-
-`r fld2str("Describe Boundary")`
+<!--`r fld2str("Describe Boundary")`-->
 
 Spatial reference files:
 
@@ -160,7 +158,7 @@ if (nrow(d) == 1)
   include_graphics(d$path)
 ```
 
-## Documents
+## Drawings
 
 ```{r documents, results='asis'}
 docs <- read_csv(files_csv) %>% 
@@ -189,16 +187,6 @@ d <- read_csv(files_csv) %>%
 if (nrow(d) > 0)
   paths2carousel(d$path)
 ```
-
-## Sustainability
-
-`r fld2str("Cost Range")`
-
-`r fld2str("Time frame for societal ROI")`
-
-`r fld2str("What kinds of multi-benefit, performance driven improvements would result from this project, with respect to resource management, energy efficiency, life cycle costs, avoided costs, etc?", "Multi-benefits")`
-
-`r fld2str("What specific ecosystem services will be created, expanded or supported as a result of this project?", "Ecosystem services")`
 
 ## Housing
 
@@ -271,6 +259,16 @@ if (nrow(d) > 0)
 `r fld2str("If multi-level parking is proposed, what is its approx. area?", "Garage Area")`
 
 `r fld2str("Will stacked car lifts be incorporated?", "Stacked Lifts")`
+
+## Sustainability
+
+`r fld2str("Cost Range")`
+
+`r fld2str("Time frame for societal ROI")`
+
+`r fld2str("What kinds of multi-benefit, performance driven improvements would result from this project, with respect to resource management, energy efficiency, life cycle costs, avoided costs, etc?", "Multi-benefits")`
+
+`r fld2str("What specific ecosystem services will be created, expanded or supported as a result of this project?", "Ecosystem services")`
 
 ## References
 
