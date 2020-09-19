@@ -46,19 +46,10 @@ project <<- read_csv(projects_csv) %>%
 <!-- 1st div on left -->
 ::: {}
 
-`r fld2str("Project Description")`
-
-`r fld2str("Type of Vision")`
-
-**Team:** [`r project$team_name`](`r glue("./team_{project$team_key}.html")`)
-
+- `r fld2str("Project Description")`
+- **Team:** [`r project$team_name`](`r glue("./team_{project$team_key}.html")`)
+- `r fld2str("Submitted", "Submitted on")`
 <!--`r fld2str("Design Standards Affected")`-->
-
-`r fld2str("Existing Land Use")`
-
-`r fld2str("Proposed Land Use")`
-
-`r fld2str("Submitted", "Submitted on")`
 
 :::
 
@@ -188,77 +179,87 @@ if (nrow(d) > 0)
   paths2carousel(d$path)
 ```
 
-## Housing
+## Planning
 
-`r fld2str("parcel size (square feet)")`
+<!-- multi-column layout -->
+:::: {style="display: flex;"}
 
-`r fld2str("setbacks")`
+<!-- 1st div on left -->
+::: {}
 
-`r fld2str("building height (feet)")`
+### Site & Building Areas
 
-`r fld2str("# demo units")`
+- `r fld2str("parcel size (square feet)", "Lot size (ft^2^)")`
+- `r fld2str("Existing Land Use")`
+- `r fld2str("Proposed Land Use")`
+- `r fld2str("Type of Vision", "Type of project")`
+- `r fld2str("building height (feet)")`
+- `r fld2str("setbacks")`
+- `r fld2str("total stories", "Number of stories")`
+- `r fld2str("# residential stories")`
+<!-- missing 'Podium Story' -->
+- `r fld2str("alternate open yard")`
+- `r fld2str("gross building floor area (square feet)")`
+- `r fld2str("gross building FAR")`
 
-`r fld2str("# new units")`
+### Housing Units
 
-`r fld2str("If this proposal requires additional amendments to the downtown development standards, please justify those changes below.", "Design standards justification for amendment(s)")`
-
-`r fld2str("total units")`
-
-`r fld2str("density (units/acre)")`
-
-`r fld2str("average unit size (square feet)")`
-
-`r fld2str("total stories")`
-
-`r fld2str("# residential stories")`
-
-`r fld2str("studio units")`
-
-`r fld2str("micro units (less than 400 square feet)")`
-
+- `r fld2str("# demo units", "Number of units removed")`
+- `r fld2str("# new units")`
+- `r fld2str("total units")`
+<!--
 `r fld2str("1-bedroom units")`
-
 `r fld2str("2-bedroom units")`
-
 `r fld2str("3+ bedroom units")`
+-->
+```{r}
+n_bed_units <- project %>% 
+  select(`1-bedroom units`, `2-bedroom units`, `3+ bedroom units`) %>% 
+  as.numeric() %>% as.vector() %>% sum(na.rm = T)
+```
+- **Number of apartments (1+ bedrooms):** `r ifelse(
+  is.na(n_bed_units), 
+  n_bed_units,
+  "<span style='color:gray;'>[empty]</span>")`
+- `r fld2str("studio units", "Number of studio units")`
+- `r fld2str("micro units (less than 400 square feet)", "Number of micro units (< 400 ft^2^)")`
+- `r fld2str("inclusionary units", "Number of inclusionary units")`
+- `r fld2str("average unit size (square feet)")`
+- `r fld2str("density (units/acre)", "Average unit density (units/acre)")`
+- `r fld2str("net rentable floor area (square feet)")`
+- `r fld2str("net rentable FAR")`
 
-`r fld2str("inclusionary units")`
+:::
 
-`r fld2str("alternate open yard")`
+<!-- 2nd div on right -->
+::: {} 
 
-`r fld2str("gross building floor area (square feet)")`
+### Parking
 
-`r fld2str("gross building FAR")`
+#### Parking Requirements
 
-`r fld2str("net rentable floor area (square feet)")`
+- `r fld2str("public parking spaces")`
+- `r fld2str("commercial parking spaces")`
+- `r fld2str("residential parking spaces")`
+- `r fld2str("total parking spaces")`
+- `r fld2str("Is a podium proposed?", "Podium")`
+- `r fld2str("If a podium is proposed, what is its approx. area?", "Podium area (ft^2^)")`
+- `r fld2str("Is a multi-level parking garage being proposed?", "Multi-level garage")`
+- `r fld2str("If multi-level parking is proposed, what is its approx. area?", "Multi-level garage area (ft^2^)")`
+- `r fld2str("Will stacked car lifts be incorporated?", "Garage stacked lifts")`
+- `r fld2str("Is underground parking proposed?", "Underground parking")`
+- `r fld2str("If underground parking is being proposed, what is its approx. area?", "Underground parking area (ft^2^)")`
 
-`r fld2str("net rentable FAR")`
+:::
 
-`r fld2str("Development Standards affected")`
+<!-- end: multi-column layout -->
+:::: 
 
-## Parking
+### Regulations
 
-`r fld2str("public parking spaces", "Public Parking Spaces")`
+- `r fld2str("Development Standards affected")`
+- `r fld2str("If this proposal requires additional amendments to the downtown development standards, please justify those changes below.", "Design standards justification for amendment(s)")`
 
-`r fld2str("commercial parking spaces")`
-
-`r fld2str("residential parking spaces")`
-
-`r fld2str("total parking spaces")`
-
-`r fld2str("Is a podium proposed?", "Podium")`
-
-`r fld2str("If a podium is proposed, what is its approx. area?", "Podium Area")`
-
-`r fld2str("Is underground parking proposed?", "Underground")`
-
-`r fld2str("If underground parking is being proposed, what is its approx. area?", "Underground Area")`
-
-`r fld2str("Is a multi-level parking garage being proposed?", "Multi-level Garage")`
-
-`r fld2str("If multi-level parking is proposed, what is its approx. area?", "Garage Area")`
-
-`r fld2str("Will stacked car lifts be incorporated?", "Stacked Lifts")`
 
 ## Sustainability
 

@@ -321,11 +321,26 @@ import_files <- function(){
   # TODO: seperate files/ from images/?
 }
 
+str2cap <- function(s){ 
+  s <- paste0(toupper(substr(s, 1, 1)), substr(s, 2, nchar(s)))
+  s <- s %>% 
+    str_replace("^# ", "Number of ") %>% 
+    str_replace("(square feet)", "(ft^2^)") %>% 
+    str_replace("(feet)", "(ft)") %>% 
+    str_replace("FAR", "floor area ratio (FAR)")
+  s
+}
+
 fld2str <- function(fld, lbl = fld){
   # fld = "Project Proposal Description"; lbl = "Description"
   str <- ""
   
   if(!fld %in% names(project)) stop(glue("fld not in project: {fld}"))
+  
+  if (lbl == fld){
+    # lbl = "test this"
+    str2cap(lbl)
+  }
   
   if(!is.na(project[[fld]]) && nchar(project[[fld]]) > 0){
     str <- glue("**{lbl}:** {project[[fld]]}")
