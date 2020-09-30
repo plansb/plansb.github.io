@@ -289,6 +289,7 @@ import_files <- function(){
   }
   
   image_overview <- get_files("Image for overview"                         , "image_overview")
+  far_tool       <- get_files("FAR Tool image"                             , "far_tool")
   images         <- get_files("Other images for gallery"                   , "images")
   documents      <- get_files("Drawings and related documents"             , "documents")
   references     <- get_files("Reference files, inspirational images, etc.", "references") 
@@ -297,6 +298,7 @@ import_files <- function(){
   
   project_files <- image_overview %>%     
     bind_rows(images) %>% 
+    bind_rows(far_tool) %>% 
     bind_rows(documents) %>% 
     bind_rows(references) %>% 
     bind_rows(spatial) %>% 

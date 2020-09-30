@@ -27,6 +27,7 @@ projects <- read_csv(projects_csv) %>%
 #View(projects)
 stopifnot(!any(duplicated(projects$key)))
 pwalk(projects, render_project)
+#pwalk(projects %>% filter(name == "The Makers' Block"), render_project)
 
 # render teams ----
 render_team <- function(key, name, htm){

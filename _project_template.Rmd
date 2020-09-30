@@ -4,8 +4,8 @@ output: html_document
 params:
   #project_name: "Project Template"
   #project_key: "500-block-dumbbell-development"
-  project_name: "Architect"
-  project_key: "architect"
+  project_name: "The Makers' Block"
+  project_key: "the-makers-block"
   # project_name: "nice-potted-plants-on-street"
   # project_key: "nice-potted-plants-on-street"
   # project_name: "3 Story Multi-family behind Staples above enclosed parking garage"
@@ -183,6 +183,20 @@ if (nrow(d) > 0)
 ## Planning
 
 <!-- TODO: FAR image -->
+
+```{r far_tool}
+d <- read_csv(files_csv) %>% 
+  filter(
+    project_key == params$project_key,
+    file_category == "far_tool")
+
+if (nrow(d) > 0)
+  include_graphics(d$path[1])
+if (nrow(d) > 1)
+  include_graphics(d$path[2])
+if (nrow(d) > 2)
+  stop(glue("WHOAH! This project params$project_key has > 2 far tool images?!"))
+```
 
 <!-- multi-column layout -->
 :::: {style="display: flex;"}
