@@ -17,13 +17,16 @@ render_project <- function(key, name, htm){
       project_key  = key),
     output_file = htm)}
 
-read_csv(projects_csv) %>%
+projects <- read_csv(projects_csv) %>%
   mutate(
     project_title = `Project Title` %>% 
       str_replace_all('"', "'")) %>% 
   select(
-    key = project_key, name = project_title, htm = project_htm) %>%
-  pwalk(render_project)
+    key = project_key, name = project_title, htm = project_htm) %>% 
+  arrange(key)
+#View(projects)
+stopifnot(!any(duplicated(projects$key)))
+pwalk(projects, render_project)
 
 # render teams ----
 render_team <- function(key, name, htm){

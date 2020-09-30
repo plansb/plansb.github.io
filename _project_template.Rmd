@@ -2,8 +2,10 @@
 title: "`r params$project_name`"
 output: html_document
 params:
-  project_name: "Project Template"
-  project_key: "500-block-dumbbell-development"
+  #project_name: "Project Template"
+  #project_key: "500-block-dumbbell-development"
+  project_name: "Architect"
+  project_key: "architect"
   # project_name: "nice-potted-plants-on-street"
   # project_key: "nice-potted-plants-on-street"
   # project_name: "3 Story Multi-family behind Staples above enclosed parking garage"
@@ -24,16 +26,15 @@ knitr::opts_chunk$set(echo = F, warning = F, message = F)
 source("functions.R")
 
 # params <- list(
-  # project_key = "stakeholder")
-  # project_key = "500-block-dumbbell-development")
+#   project_key = "architect",
+#   project_key = "Architect")
 
 project <<- read_csv(projects_csv) %>% 
   filter(project_key == params$project_key) %>%
   mutate(
     Submitted = as_datetime(
       Timestamp, 
-      format = "%m/%d/%Y %H:%M:%S", tz="America/Los_Angeles")    
-  )
+      format = "%m/%d/%Y %H:%M:%S", tz="America/Los_Angeles"))
 ```
 
 # {.tabset}
@@ -180,6 +181,8 @@ if (nrow(d) > 0)
 ```
 
 ## Planning
+
+<!-- TODO: FAR image -->
 
 <!-- multi-column layout -->
 :::: {style="display: flex;"}

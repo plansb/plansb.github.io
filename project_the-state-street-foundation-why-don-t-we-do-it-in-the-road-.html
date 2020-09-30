@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>The State Street Foundation: Why Don’t We Do It In The Road?</title>
+
+<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="site_libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="site_libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="site_libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">planSB.org</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-users"></span>
+     
+    Teams
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">1000 Block</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="./team_1000A.html">1000 Block Team A</a>
+        </li>
+        <li>
+          <a href="./team_1000B.html">1000 Block Team B</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">400 Block</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="./team_400A.html">400 Block Team A</a>
+        </li>
+        <li>
+          <a href="./team_400B.html">400 Block Team B</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">500 Block</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="./team_500A.html">500 Block Team A</a>
+        </li>
+        <li>
+          <a href="./team_500B.html">500 Block Team B</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">600 Block</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="./team_600A.html">600 Block Team A</a>
+        </li>
+        <li>
+          <a href="./team_600B.html">600 Block Team B</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">700/800 Block</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="./team_700A.html">700/800 Block Team A</a>
+        </li>
+        <li>
+          <a href="./team_700B.html">700/800 Block Team B</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">900 Block</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="./team_900A.html">900 Block Team A</a>
+        </li>
+        <li>
+          <a href="./team_900B.html">900 Block Team B</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Corridor</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="./team_corA.html">Corridor Team A</a>
+        </li>
+        <li>
+          <a href="./team_corB.html">Corridor Team B</a>
+        </li>
+        <li>
+          <a href="./team_corC.html">Corridor Team C</a>
+        </li>
+        <li>
+          <a href="./team_corD.html">Corridor Team D</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="./team_sup.html">Expertise Support Team</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="index.html#projects">
+    <span class="fa fa-pencil"></span>
+     
+    Projects
+  </a>
+</li>
+<li>
+  <a href="./submit.html">
+    <span class="fa fa-paper-plane"></span>
+     
+    Submit
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="about.html">
+    <span class="fa fa-info-circle"></span>
+     
+    About
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">The State Street Foundation: Why Don’t We Do It In The Road?</h1>
+
+</div>
+
+
+<div id="section" class="section level1 tabset">
+<h1></h1>
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<!-- multi-column layout -->
+<div style="display: flex;">
+<!-- 1st div on left -->
+<div>
+<ul>
+<li><strong>Project Description:</strong> The State Street Foundation is a public-private partnership which creates, funds and implements phased projects based on a master plan. Activities are programmed in partnership with Santa Barbara businesses, institutions and non-profits. State Street reinvigoration, reinvention, reimagination and repurposing receives continuous support via a dedicated non-profit organization for the benefit of our community. A linear park is home to extensive programmed events. The park begins at the waterfront and ends at Micheltorena Street and includes seven East-West pedestrain extensions which integrate special districts and cultural landmarks. It is supported by a one way transportation loop of shuttle, transit and bike lanes.</li>
+<li><strong>Team:</strong> <a href="./team_corB.html">Corridor Team B</a></li>
+<li><strong>Submitted on:</strong> 2020-09-25 17:20:58 <!--**Design Standards Affected:** <span style='color:gray;'>[empty]</span>--></li>
+</ul>
+</div>
+<!-- 2nd div on right -->
+<div>
+<div id="htmlwidget-7927dae52ac42b4caa46" style="width:300px;height:300px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7927dae52ac42b4caa46">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Stamen.TonerLite",null,"Black & white",{"errorTileUrl":"","noWrap":false,"opacity":0.5,"detectRetina":false,"attribution":""}]},{"method":"addProviderTiles","args":["CartoDB.Voyager",null,"Streets",{"errorTileUrl":"","noWrap":false,"opacity":0.8,"detectRetina":false}]},{"method":"addProviderTiles","args":["Esri.WorldImagery",null,"Satellite",{"errorTileUrl":"","noWrap":false,"opacity":0.5,"detectRetina":false}]},{"method":"addPolygons","args":[[[[{"lng":[-119.6965947,-119.6953475,-119.6943141,-119.6931226,-119.6943698,-119.6965947],"lat":[34.4157654,34.4148636,34.4158499,34.4169625,34.4178541,34.4157654]}]],[[{"lng":[-119.6978949,-119.6966698,-119.6961803,-119.6944355,-119.6956693,-119.6962373,-119.696757,-119.6978949],"lat":[34.416698,34.4158118,34.4163008,34.4178961,34.4187834,34.4181984,34.4177396,34.416698]}]],[[{"lng":[-119.6969203,-119.6973629,-119.6975614,-119.6980187,-119.6980764,-119.6991587,-119.6979342,-119.6969069,-119.6967943,-119.6962927,-119.6957268,-119.6961586,-119.6969203],"lat":[34.4197238,34.4192702,34.4190777,34.4186706,34.4186108,34.4175952,34.41673,34.4176859,34.4177855,34.4182325,34.4188321,34.4191684,34.4197238]}]],[[{"lng":[-119.7016973,-119.7013493,-119.7004381,-119.6992056,-119.6980603,-119.6976889,-119.699158,-119.7001793,-119.70054,-119.7011415,-119.7016973],"lat":[34.4194671,34.4192251,34.4185671,34.4176273,34.4187054,34.4190512,34.4201298,34.4208666,34.4205286,34.4199525,34.4194671]}]],[[{"lng":[-119.7007666,-119.7018328,-119.7018985,-119.7029794,-119.7024188,-119.7017563,-119.7012219,-119.7006661,-119.7003905,-119.6995194,-119.7002423,-119.7007666],"lat":[34.422505,34.4214927,34.4214075,34.4203809,34.419997,34.4195025,34.4199611,34.4205037,34.4207576,34.4216045,34.4221388,34.422505]}]],[[{"lng":[-119.7020373,-119.7031318,-119.7037328,-119.7043199,-119.7030787,-119.7019696,-119.7018952,-119.7008203,-119.7020373],"lat":[34.4234552,34.4224433,34.4218428,34.42135,34.4204429,34.4214645,34.4215151,34.4225525,34.4234552]}]],[[{"lng":[-119.69332,-119.6935521,-119.693316,-119.6930116,-119.6926635,-119.6925878,-119.6923638,-119.6928279,-119.6930746,-119.69332],"lat":[34.4153523,34.4151432,34.4149795,34.414787,34.4145734,34.4145247,34.4147294,34.4150238,34.4151809,34.4153523]}]],[[{"lng":[-119.6930318,-119.6941369,-119.6942495,-119.6952688,-119.6943836,-119.693359,-119.6932571,-119.6921306,-119.6930318],"lat":[34.4168958,34.4158602,34.4157629,34.4147937,34.4141343,34.4151123,34.4152053,34.4162585,34.4168958]}]],[[{"lng":[-119.6994771,-119.7001793,-119.6991177,-119.6984203,-119.6994771],"lat":[34.421559,34.4208666,34.4201076,34.4207713,34.421559]}]]],null,"Other Areas",{"interactive":true,"className":"","stroke":true,"color":["#CE93D8","#0F9D58","#01579B","#FFD600","#B2EBF2","#F57C00","#0097A7","#0097A7","#FFEA00"],"weight":0.5,"opacity":0.3,"fill":true,"fillColor":["#CE93D8","#0F9D58","#01579B","#FFD600","#B2EBF2","#F57C00","#0097A7","#0097A7","#FFEA00"],"fillOpacity":0.1,"smoothFactor":1,"noClip":false},["<strong> 400 Block <\/strong><br> 6 projects <ul>\n <li><a href='././project_401-state-mixed-use-project.html'>401 State Mixed Use Project<\/a><\/li>\n<li><a href='././project_14-w-gutierrez-st.html'>14 W Gutierrez St<\/a><\/li>\n<li><a href='././project_independent-senior-housing.html'>Independent Senior Housing<\/a><\/li>\n<li><a href='././project_ablitt-s-adaptive-reuse.html'>Ablitt's Adaptive Reuse<\/a><\/li>\n<li><a href='././project_park-ing.html'>Park-Ing<\/a><\/li>\n<li><a href='././project_gateway-onto-state.html'>Gateway Onto State<\/a><\/li> \n<\/ul> 2 teams <ul>\n <li><a href='././team_400A.html'>400 Block Team A<\/a><\/li>\n<li><a href='././team_400B.html'>400 Block Team B<\/a><\/li> \n<\/ul>","<strong> 500 Block <\/strong><br> 3 projects <ul>\n <li><a href='././project_the-makers-block.html'>The Makers' Block<\/a><\/li>\n<li><a href='././project_opportunity-site-city-lot-11.html'>Opportunity Site - City Lot #11<\/a><\/li>\n<li><a href='././project_adaptive-reuse-the-bridge-at-anacapa-and-haley.html'>Adaptive Reuse - The Bridge at Anacapa and Haley<\/a><\/li> \n<\/ul> 2 teams <ul>\n <li><a href='././team_500A.html'>500 Block Team A<\/a><\/li>\n<li><a href='././team_500B.html'>500 Block Team B<\/a><\/li> \n<\/ul>","<strong> 600 Block <\/strong><br> 1 projects <ul>\n <li><a href='././project_team-3b-600-block-state-st.html'>Team 3B 600 Block State St<\/a><\/li> \n<\/ul> 2 teams <ul>\n <li><a href='././team_600A.html'>600 Block Team A<\/a><\/li>\n<li><a href='././team_600B.html'>600 Block Team B<\/a><\/li> \n<\/ul>","<strong> 700/800 Block <\/strong><br> 6 projects <ul>\n <li><a href='././project_balboa-building.html'>BALBOA BUILDING<\/a><\/li>\n<li><a href='././project_rosinka-gardens.html'>Rosinka Gardens<\/a><\/li>\n<li><a href='././project_de-la-guerra-micro-units.html'>De La Guerra Micro-Units<\/a><\/li>\n<li><a href='././project_howard-canfield-residential-development.html'>Howard Canfield Residential Development<\/a><\/li>\n<li><a href='././project_howard-canfield-building.html'>Howard Canfield Building<\/a><\/li>\n<li><a href='././project_nordstroms-building-renovation.html'>Nordstroms Building Renovation<\/a><\/li> \n<\/ul> 2 teams <ul>\n <li><a href='././team_700A.html'>700/800 Block Team A<\/a><\/li>\n<li><a href='././team_700B.html'>700/800 Block Team B<\/a><\/li> \n<\/ul>","<strong> 900 Block <\/strong><br> 4 projects <ul>\n <li><a href='././project_anacarrillo.html'>Anacarrillo<\/a><\/li>\n<li><a href='././project_paseo-hughes.html'>Paseo Hughes<\/a><\/li>\n<li><a href='././project_-los-dos-.html'>\"LOS DOS\"<\/a><\/li>\n<li><a href='././project_931-anacapa.html'>931 Anacapa<\/a><\/li> \n<\/ul> 2 teams <ul>\n <li><a href='././team_900A.html'>900 Block Team A<\/a><\/li>\n<li><a href='././team_900B.html'>900 Block Team B<\/a><\/li> \n<\/ul>","<strong> 1000 Block <\/strong><br> 2 projects <ul>\n <li><a href='././project_transit-center-plaza-project.html'>Transit Center Plaza Project<\/a><\/li>\n<li><a href='././project_luna-y-dos-soles-transit-plaza-and-figueroa-anacapa-blocks-.html'>Luna Y Dos Soles (Transit Plaza and Figueroa/Anacapa Blocks)<\/a><\/li> \n<\/ul> 2 teams <ul>\n <li><a href='././team_1000A.html'>1000 Block Team A<\/a><\/li>\n<li><a href='././team_1000B.html'>1000 Block Team B<\/a><\/li> \n<\/ul>","<strong> Freeway Underpass <\/strong><br> 0 projects <br> 0 teams ","<strong> 300 Block <\/strong><br> 0 projects <br> 0 teams ","<strong> 800 Block <\/strong><br> 0 projects <br> 0 teams "],null,["<strong> 400 Block <\/strong><br> 6 projects<br> 2 teams","<strong> 500 Block <\/strong><br> 3 projects<br> 2 teams","<strong> 600 Block <\/strong><br> 1 projects<br> 2 teams","<strong> 700/800 Block <\/strong><br> 6 projects<br> 2 teams","<strong> 900 Block <\/strong><br> 4 projects<br> 2 teams","<strong> 1000 Block <\/strong><br> 2 projects<br> 2 teams","<strong> Freeway Underpass <\/strong><br> 0 projects<br> 0 teams","<strong> 300 Block <\/strong><br> 0 projects<br> 0 teams","<strong> 800 Block <\/strong><br> 0 projects<br> 0 teams"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLayersControl","args":[["Black & white","Streets","Satellite"],["Project Area","Other Areas"],{"collapsed":true,"autoZIndex":true,"position":"topright"}]},{"method":"addPolygons","args":[[[[{"lng":[-119.7070764,-119.6956618,-119.6955103,-119.7069212,-119.7070764],"lat":[34.4251466,34.4167725,34.4169142,34.425292,34.4251466]}]]],null,"Project Area",{"interactive":true,"className":"","stroke":true,"color":"#9C27B0","weight":2,"opacity":0.9,"fill":true,"fillColor":"#9C27B0","fillOpacity":0.6,"smoothFactor":1,"noClip":false},"<strong> Corridor <\/strong><br> 3 projects <ul>\n <li><a href='././project_aia-design-charrette.html'>AIA Design Charrette<\/a><\/li>\n<li><a href='././project_team-a-state-street-corridor.html'>TEAM A STATE STREET CORRIDOR<\/a><\/li>\n<li><a href='././project_the-state-street-foundation-why-don-t-we-do-it-in-the-road-.html'>The State Street Foundation: Why Don't We Do It In The Road?<\/a><\/li> \n<\/ul> 4 teams <ul>\n <li><a href='././team_corA.html'>Corridor Team A<\/a><\/li>\n<li><a href='././team_corB.html'>Corridor Team B<\/a><\/li>\n<li><a href='././team_corC.html'>Corridor Team C<\/a><\/li>\n<li><a href='././team_corD.html'>Corridor Team D<\/a><\/li> \n<\/ul>",null,["<strong> Corridor <\/strong><br> 3 projects<br> 4 teams"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[34.4141343,34.425292],"lng":[-119.7070764,-119.6921306]},"fitBounds":[34.4141343,-119.7043199,34.4234552,-119.6921306,[]]},"evals":[],"jsHooks":[]}</script>
+<p><strong>Focus Area:</strong> Corridor</p>
+<p><strong>Specific Address:</strong> <span style="color:gray;">[empty]</span></p>
+<!--**Add New Area or Boundary to Map:** Yes-->
+<!--**Describe Boundary:** Includes State Street and all 2-block cross-streets from Cabrillo Blvd. to Micheltorena Street.-->
+<p>Spatial reference files:</p>
+<ul>
+<li><a href="images/1A%20Santa%20Barbara%20-%20Map%20Only%2009.20-R%20-%20Courtney%20Jane%20Miller.pdf">1A Santa Barbara - Map Only 09.20-R - Courtney Jane Miller.pdf</a></li>
+</ul>
+</div>
+<!-- end: multi-column layout -->
+</div>
+<p><img src="images/AIACharrette_2020-StateSt.Corridor-TeamB-Final%203%20-%20Courtney%20Jane%20Miller.jpg" width="1844" /></p>
+</div>
+<div id="drawings" class="section level2">
+<h2>Drawings</h2>
+<ul>
+<li><a href="images/AIACharrette_2020-StateSt.Corridor-TeamB-Final%20-%20Courtney%20Jane%20Miller.pdf">AIACharrette_2020-StateSt.Corridor-TeamB-Final - Courtney Jane Miller.pdf</a></li>
+</ul>
+</div>
+<div id="images" class="section level2">
+<h2>Images</h2>
+<div id="images_carousel" class="carousel slide" data-ride="carousel">
+<ol class="carousel-indicators">
+<li data-target="#images_carousel" data-slide-to="0" class="active"></li>
+<li data-target="#images_carousel" data-slide-to="1"></li>
+<li data-target="#images_carousel" data-slide-to="2"></li>
+</ol>
+<div class="carousel-inner" role="listbox">
+<div class="item active">
+<img src="images/AIACharrette_2020-StateSt.Corridor-TeamB-Final%203%20-%20Courtney%20Jane%20Miller.jpg" class="img-responsive center-block"/>
+<div class="carousel-caption">
+<h3>AIACharrette_2020-StateSt.Corridor-TeamB-Final 3 - Courtney Jane Miller</h3>
+<p></p>
+</div>
+</div>
+<div class="item">
+<img src="images/AIACharrette_2020-StateSt.Corridor-TeamB-Final%2019%20-%20Courtney%20Jane%20Miller.jpg" class="img-responsive center-block"/>
+<div class="carousel-caption">
+<h3>AIACharrette_2020-StateSt.Corridor-TeamB-Final 19 - Courtney Jane Miller</h3>
+<p></p>
+</div>
+</div>
+<div class="item">
+<img src="images/AIACharrette_2020-StateSt.Corridor-TeamB-Final%2020%20-%20Courtney%20Jane%20Miller.jpg" class="img-responsive center-block"/>
+<div class="carousel-caption">
+<h3>AIACharrette_2020-StateSt.Corridor-TeamB-Final 20 - Courtney Jane Miller</h3>
+<p></p>
+</div>
+</div>
+</div>
+<a class="left carousel-control" href="#images_carousel" role="button" data-slide="prev">
+<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+<span class="sr-only">Previous</span>
+</a>
+<a class="right carousel-control" href="#images_carousel" role="button" data-slide="next">
+<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+<span class="sr-only">Next</span>
+</a>
+</div>
+</div>
+<div id="planning" class="section level2">
+<h2>Planning</h2>
+<!-- TODO: FAR image -->
+<!-- multi-column layout -->
+<div style="display: flex;">
+<!-- 1st div on left -->
+<div>
+<h3 id="site-building-areas">Site &amp; Building Areas</h3>
+<ul>
+<li><strong>Lot size (ft<sup>2</sup>):</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>Existing Land Use:</strong> Public Road + Streetscape</li>
+<li><strong>Proposed Land Use:</strong> Linear Public Park</li>
+<li><strong>Type of project:</strong> Reinventing of Outdoor Open Space</li>
+<li><strong>building height (feet):</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>setbacks:</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>Number of stories:</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong># residential stories:</strong> <span style="color:gray;">[empty]</span> <!-- missing 'Podium Story' --></li>
+<li><strong>alternate open yard:</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>gross building floor area (square feet):</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>gross building FAR:</strong> <span style="color:gray;">[empty]</span></li>
+</ul>
+<h3 id="housing-units">Housing Units</h3>
+<ul>
+<li><p><strong>Number of units removed:</strong> <span style="color:gray;">[empty]</span></p></li>
+<li><p><strong># new units:</strong> <span style="color:gray;">[empty]</span></p></li>
+<li><p><strong>total units:</strong> <span style="color:gray;">[empty]</span> <!--
+**1-bedroom units:** <span style='color:gray;'>[empty]</span>
+**2-bedroom units:** <span style='color:gray;'>[empty]</span>
+**3+ bedroom units:** <span style='color:gray;'>[empty]</span>
+--></p></li>
+<li><p><strong>Number of apartments (1+ bedrooms):</strong> <span style="color:gray;">[empty]</span></p></li>
+<li><p><strong>Number of studio units:</strong> <span style="color:gray;">[empty]</span></p></li>
+<li><p><strong>Number of micro units (&lt; 400 ft<sup>2</sup>):</strong> <span style="color:gray;">[empty]</span></p></li>
+<li><p><strong>Number of inclusionary units:</strong> <span style="color:gray;">[empty]</span></p></li>
+<li><p><strong>average unit size (square feet):</strong> <span style="color:gray;">[empty]</span></p></li>
+<li><p><strong>Average unit density (units/acre):</strong> <span style="color:gray;">[empty]</span></p></li>
+<li><p><strong>net rentable floor area (square feet):</strong> <span style="color:gray;">[empty]</span></p></li>
+<li><p><strong>net rentable FAR:</strong> <span style="color:gray;">[empty]</span></p></li>
+</ul>
+</div>
+<!-- 2nd div on right -->
+<div>
+<h3 id="parking">Parking</h3>
+<h4 id="parking-requirements">Parking Requirements</h4>
+<ul>
+<li><strong>public parking spaces:</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>commercial parking spaces:</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>residential parking spaces:</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>total parking spaces:</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>Podium:</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>Podium area (ft<sup>2</sup>):</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>Multi-level garage:</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>Multi-level garage area (ft<sup>2</sup>):</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>Garage stacked lifts:</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>Underground parking:</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>Underground parking area (ft<sup>2</sup>):</strong> <span style="color:gray;">[empty]</span></li>
+</ul>
+</div>
+<!-- end: multi-column layout -->
+</div>
+<div id="regulations" class="section level3">
+<h3>Regulations</h3>
+<ul>
+<li><strong>Development Standards affected:</strong> <span style="color:gray;">[empty]</span></li>
+<li><strong>Design standards justification for amendment(s):</strong> <span style="color:gray;">[empty]</span></li>
+</ul>
+</div>
+</div>
+<div id="sustainability" class="section level2">
+<h2>Sustainability</h2>
+<p><strong>Cost Range:</strong> over $50,000,000</p>
+<p><strong>Time frame for societal ROI:</strong> <span style="color:gray;">[empty]</span></p>
+<p><strong>Multi-benefits:</strong> <span style="color:gray;">[empty]</span></p>
+<p><strong>Ecosystem services:</strong> <span style="color:gray;">[empty]</span></p>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p>Reference files, inspirational images, etc.:</p>
+<p><strong>Web references:</strong> <span style="color:gray;">[empty]</span></p>
+</div>
+</div>
+
+<hr>
+Website developed by: <a href="http://realsiteplans.com/">Real Site Plans</a>, <a href="http://ecoquants.com/">EcoQuants</a>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
