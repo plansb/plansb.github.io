@@ -22,6 +22,13 @@ editor_options:
 knitr::opts_chunk$set(echo = F, warning = F, message = F)
 ```
 
+<style>
+.fit-image{
+width: 100%;
+object-fit: cover;
+height: 300px; /* only if you want fixed height */
+}
+</style>
 ```{r project}
 source("functions.R")
 
@@ -140,7 +147,7 @@ if (nrow(d) > 0){
 <!-- end: multi-column layout -->
 :::: 
 
-```{r image_overview}
+```{r image_overview, out.width="100%"}
 d <- read_csv(files_csv) %>% 
   filter(
     project_key == params$project_key,
@@ -184,7 +191,7 @@ if (nrow(d) > 0)
 
 <!-- TODO: FAR image -->
 
-```{r far_tool}
+```{r far_tool, out.width="100%"}
 d <- read_csv(files_csv) %>% 
   filter(
     project_key == params$project_key,
