@@ -41,7 +41,7 @@ datatable(
   projects, 
   escape = F,
   plugins = 'natural', options = list(
-    dom = 't',
+    #dom = 't',
     columnDefs = list(list(
       type = 'natural', targets = "_all")))) %>% 
     formatDate("Submitted", method = "toLocaleString")

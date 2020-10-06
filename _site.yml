@@ -67,6 +67,7 @@ navbar:
 output:
   html_document:
     theme: yeti
+    mathjax: ~
     self_contained: no
     lib_dir: site_libs
     include:
