@@ -40,16 +40,16 @@ team_name,role,name,email,is_team_leader,team_key,area_key
 500 Block Team B,Emerging Architectural Professionals,Lila Boyce,lila@anacapaarchitecture.com,NA,500B,500
 500 Block Team B,Emerging Architectural Professionals,Vandhana Balachandran,vandhana@bbird.com,NA,500B,500
 500 Block Team B,Landscape Architects,Lane Goodkind,lane@lanegoodkind.com,NA,500B,500
-600 Block Team A,Architects,Detty Peikert,dhpeikert@rrmdesign.com,NA,600A,600
 600 Block Team A,Architects,Michael Holliday,michael@dmhaa.com,NA,600A,600
-600 Block Team A,Architects,Roland Sharpe Flores,roland.flores@aya.yale.edu,NA,600A,600
+601 Block Team A,Architects,Andrew Gartner,andrew@gartnerdesignco.com,NA,NA,NA
+602 Block Team A,Architects,Gelare Macon AICP,gmacon@flowersassoc.com,NA,NA,NA
+603 Block Team A,Community Stakeholders,Sicheng Wang,sicheng_wang@ucsb.edu,NA,NA,NA
+604 Block Team A,Architects,Rose Hillebrandt,rose@dmhaa.com,NA,NA,NA
 600 Block Team A,Community Stakeholders,Mina Ash,Mash@designarc.net,NA,600A,600
 600 Block Team A,Community Young People,Ani Rodriguez,Arodriguez.Cza@Gmail.Com,NA,600A,600
 600 Block Team A,Emerging Architectural Professionals,Joseph Rabun,jrabun@harrisondesign.com,NA,600A,600
-600 Block Team A,Emerging Architectural Professionals,Lauren,lauren@a34studio.com,NA,600A,600
+600 Block Team A,Emerging Architectural Professionals,Lauren Anderson,lauren@a34studio.com,NA,600A,600
 600 Block Team A,"Engineers (Civil, Structural)",Jasper Jacobs,jasper.s.jacobs@gmail.com,NA,600A,600
-600 Block Team A,Landscape Architects,Charles McClure,cmla3114@gmail.com,NA,600A,600
-600 Block Team A,Planners,Tony Tomasello,actomasello@rrmdesign.com,NA,600A,600
 600 Block Team B,Architects,Don Nulty,don@donnulty.com,NA,600B,600
 600 Block Team B,Architects,Ellen Bildsten,ellen@sb-designgroup.com,NA,600B,600
 600 Block Team B,Architects,Serena McClintick,smcclintick@harrisondesign.com,NA,600B,600
@@ -107,8 +107,9 @@ team_name,role,name,email,is_team_leader,team_key,area_key
 1000 Block Team A,Landscape Architects,Mariella,mariella@cjm-la.com,NA,1000A,1000
 1000 Block Team A,Planners,Joanna Kaufman,jkaufman@bhfs.com,NA,1000A,1000
 1000 Block Team B,Architects,Kristin Stoyanova,kristin@anacapaarchitecture.com,NA,1000B,1000
-1000 Block Team B,Architects,Richard Warner (Rwlwarner@cox.net) brian cearnal,bc@cearnal.com,NA,1000B,1000
+1000 Block Team B,Architects,Brian Cearnal,bc@cearnal.com,NA,1000B,1000
 1000 Block Team B,Community Stakeholders,Eric Meyer,ericdmeyer@gmail.com,NA,1000B,1000
+1001 Block Team B,NA,Richard Warner,Rwlwarner@cox.net,NA,NA,NA
 1000 Block Team B,Community Stakeholders,Molly Morrison,mollytmorrison@gmail.com,NA,1000B,1000
 1000 Block Team B,Community Young People,Alanna Green,agreen30@calpoly.edu,NA,1000B,1000
 1000 Block Team B,Community Young People,Eva Yang,ruhan_yang@ucsb.edu,NA,1000B,1000
@@ -128,16 +129,17 @@ Corridor Team A,Emerging Architectural Professionals,Isaac Hendricks,IHENDRICKS@
 Corridor Team A,"Engineers (Civil, Structural)",Debbie Tilley,Debbiettd@gmail.com,NA,corA,cor
 Corridor Team A,Landscape Architects,Justin,jm@arcadiastudio.com,NA,corA,cor
 Corridor Team A,Planners,debbie rudd,dlrudd@rrmdesign.com,NA,corA,cor
-Corridor Team B,Architects,Alexa Newman,alexaschloh@yahoo.com,NA,corB,cor
-Corridor Team B,Architects,Ivonne Ibarra,ivonne.l.ibarra@gmail.com,NA,corB,cor
-Corridor Team B,Architects,Kevin Dumain,kdumain@designarc.net,NA,corB,cor
-Corridor Team B,Architects,Paul Rupp (prupp@abdesignstudioinc.com) lauralee anderson,arch4com@gmail.com,NA,corB,cor
+Corridor Team B,NA,Jodie Sutton,NA,NA,corB,cor
+Corridor Team B,NA,Jack Van Thyne,NA,NA,corB,cor
+Corridor Team B,NA,Stephanie Soldo,NA,NA,corB,cor
+Corridor Team B,NA,Melissa Cunningham,NA,NA,corB,cor
+Corridor Team B,Architects,Lauralee Anderson,arch4com@gmail.com,NA,corB,cor
+Corridor Team B,Architects,Paul Rupp,prupp@abdesignstudioinc.com,NA,corB,cor
 Corridor Team B,Community Stakeholders,Alex Jordan,jorlex80@yahoo.com,NA,corB,cor
 Corridor Team B,Community Young People,Jack Van Thyne,jjvanthyne@gmail.com,NA,corB,cor
-Corridor Team B,Emerging Architectural Professionals,Estabon,Estabon@integritydesign.group.com,NA,corB,cor
-Corridor Team B,Emerging Architectural Professionals,Geoffrey April,geoff@anacapaarchitecture.com,NA,corB,cor
+Corridor Team B,Emerging Architectural Professionals,Estabon Balikian,Estabon@integritydesign.group.com,NA,corB,cor
 Corridor Team B,Landscape Architects,Courtney Jane Miller,courtney@cjm-la.com,NA,corB,cor
-Corridor Team B,Planners,Hillary Blackerby,hblackerby@sbmtd.gov,NA,corB,cor
+Corridor Team B,Planners,Joanna Kaufman,NA,NA,corB,cor
 Corridor Team C,Architects,Fred L Sweeney,fredlsweeney@gmail.com,NA,corC,cor
 Corridor Team C,Architects,Karl Benkert,karlbenkert@gmail.com,NA,corC,cor
 Corridor Team C,Architects,Lori Kari,info@kariarchitect.com,NA,corC,cor
