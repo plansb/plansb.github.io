@@ -55,6 +55,7 @@ leaflet( width = "100%") %>%
 ## Projects
 
 ```{r}
+area_levels <- get_area_levels()
 projects <- read_csv(projects_csv) %>% 
   left_join(
     read_csv(teams_csv) %>% 
@@ -65,7 +66,8 @@ projects <- read_csv(projects_csv) %>%
       Timestamp, 
       format = "%m/%d/%Y %H:%M:%S", tz="America/Los_Angeles"),
     Project   = glue("<a href={project_htm}>{`Project Title`}</a>"), 
-    Team      = glue("<a href={team_htm}>{team_name}</a>")) %>% 
+    Team      = glue("<a href={team_htm}>{team_name}</a>"),
+    area_name = factor(area_name, area_levels, ordered = T)) %>% 
   select(Area = area_name, Project, Team, Submitted) %>% 
   arrange(Area, Project)
 

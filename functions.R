@@ -155,6 +155,12 @@ import_projects <- function(use_cache = F){
   projects_csv
 }
 
+get_area_levels <- function(){
+  c(
+    "400 Block", "500 Block", "700/800 Block", "900 Block", "600 Block",
+    "1000 Block", "Corridor")
+}
+
 update_teams_menu <- function(){
   site <- read_yaml(here("_site.yml"))
   

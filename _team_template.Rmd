@@ -23,7 +23,7 @@ source("functions.R")
 #   team_name = "Expertise Support Team",
 #   team_key  = "sup")
 
-
+area_levels <- get_area_levels()
 projects <- read_csv(projects_csv) %>% 
   filter(team_key == params$team_key) %>% 
   left_join(
@@ -34,7 +34,8 @@ projects <- read_csv(projects_csv) %>%
     Submitted = as_datetime(
       Timestamp, 
       format = "%m/%d/%Y %H:%M:%S", tz="America/Los_Angeles"),
-    Project = glue("<a href={project_htm}>{`Project Title`}</a>")) %>% 
+    Project = glue("<a href={project_htm}>{`Project Title`}</a>"),
+    area_name = factor(area_name, area_levels, ordered = T)) %>% 
   select(Area = area_name, Project, Submitted) %>% 
   arrange(Area, Project)
 
