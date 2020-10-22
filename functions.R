@@ -346,8 +346,7 @@ fld2str <- function(fld, lbl = fld){
   if(!fld %in% names(project)) stop(glue("fld not in project: {fld}"))
   
   if (lbl == fld){
-    # lbl = "test this"
-    str2cap(lbl)
+    lbl = str2cap(lbl)
   }
   
   if(!is.na(project[[fld]]) && nchar(project[[fld]]) > 0){
