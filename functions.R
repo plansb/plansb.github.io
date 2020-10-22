@@ -213,16 +213,24 @@ get_area_plys <- function(){
   projects <- read_csv(projects_csv)
   teams    <- read_csv(teams_csv)
   
-  area_lyrs <- map(st_layers(areas_kml)$name, function(x)
+  area_layers <- st_layers(areas_kml)$name
+  area_lyrs   <- map(area_layers, function(x)
     read_sf(areas_kml, layer = x) %>% 
       mutate(layer = x))
   
+  areas <- areas %>% 
+    bind_rows(
+      tibble(
+        layer = setdiff(st_layers(areas_kml)$name, areas$layer),
+        # 50% transparent black: #80000000 [Hexadecimal color code for transparency](https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4)
+        color = "#80000000")) 
+  
   area_plys <- do.call(rbind, area_lyrs) %>% 
     st_make_valid()  %>% 
-    select(-layer) %>% 
+    #select(-layer) %>% 
     left_join(
       areas, 
-      by = c("Name" = "area_kml")) %>% 
+      by = c("layer" = "layer", "Name" = "area_kml")) %>% 
     left_join(
       projects %>% 
         filter(!is.na(area_key)) %>% 
@@ -264,15 +272,16 @@ get_area_plys <- function(){
         "<strong>", area_name, "</strong><br>",
         glue("{projects_n} projects<br>"),
         glue("{teams_n} teams")))
+  
+  # mapview::mapview(area_plys)
 
-#     
-#   
-#   area_plys <- area_plys %>% 
-#     mutate(
-#       popup_html = if_else(
-#         is.na(popup_html),
-#         paste("<strong>", area_name, "</strong><br>no projects yet"),
-#         popup_html))
+  # area_plys <- area_plys %>%
+  #   mutate(
+  #     popup_html = if_else(
+  #       is.na(popup_html),
+  #       paste("<strong>", area_name, "</strong><br>no projects yet"),
+  #       popup_html))
+  area_plys
 }
 
 import_files <- function(){

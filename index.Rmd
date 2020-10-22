@@ -19,12 +19,23 @@ source("functions.R")
 
 area_plys <- get_area_plys()
 
+# table(area_plys$layer, useNA = "ifany")
+
+# setdiff(
+#   sort(unique(area_plys$layer)), 
+#   c("Main Focus Areas", "Additional Focus Areas")) %>% 
+#   paste(collapse ='", "') %>% cat()
+
+bb <- area_plys %>% 
+  filter(layer %in% c("Main Focus Areas", "Additional Focus Areas")) %>% 
+  st_bbox()
+
 main_areas <- area_plys %>% 
       filter(layer == "Main Focus Areas")
-other_areas <- area_plys %>% 
+add_areas <- area_plys %>% 
       filter(layer == "Additional Focus Areas")
-main_labels  <- main_areas$label_html
-other_labels <- other_areas$label_html
+main_labels <- main_areas$label_html
+add_labels  <- add_areas$label_html
 
 leaflet( width = "100%") %>% 
   addProviderTiles(providers$Stamen.TonerLite, group = "Black & white",
@@ -41,15 +52,55 @@ leaflet( width = "100%") %>%
     fillColor = ~color, fillOpacity = 0.6,
     label = lapply(main_labels, HTML), popup = ~popup_html) %>%
   addPolygons(
-    data = other_areas,
+    data = add_areas,
     group = "Additional Focus Areas",
     color     = ~color, opacity     = 0.6, weight = 0.5,
     fillColor = ~color, fillOpacity = 0.3,
-    label = lapply(other_labels, HTML), popup = ~popup_html) %>%
+    label = lapply(add_labels, HTML), popup = ~popup_html) %>%
+  addPolygons(
+    data = area_plys %>% 
+      filter(layer == "AUD_Priority"),
+    group = "AUD_Priority",
+    color     = ~color, opacity     = 0.6, weight = 0.5,
+    fillColor = ~color, fillOpacity = 0.3) %>%
+  addPolygons(
+    data = area_plys %>% 
+      filter(layer == "Central Business District"),
+    group = "Central Business District",
+    color     = ~color, opacity     = 0.6, weight = 0.5,
+    fillColor = ~color, fillOpacity = 0.3) %>%
+  addPolygons(
+    data = area_plys %>% 
+      filter(layer == "Downtown area for clipping polygons"),
+    group = "Downtown area for clipping polygons",
+    color     = ~color, opacity     = 0.6, weight = 0.5,
+    fillColor = ~color, fillOpacity = 0.3) %>%
+  addPolygons(
+    data = area_plys %>% 
+      filter(layer == "Historic District (El Pueblo Viejo)"),
+    group = "Historic District (El Pueblo Viejo)",
+    color     = ~color, opacity     = 0.6, weight = 0.5,
+    fillColor = ~color, fillOpacity = 0.3) %>%
+  addPolygons(
+    data = area_plys %>% 
+      filter(layer == "Zoning"),
+    group = "Zoning",
+    color     = ~color, opacity     = 0.6, weight = 0.5,
+    fillColor = ~color, fillOpacity = 0.3) %>%
   addLayersControl(
     baseGroups = c("Black & white", "Streets", "Satellite"),
-    overlayGroups = c("Main Focus Areas", "Additional Focus Areas"),
-    options = layersControlOptions(collapsed = T))
+    overlayGroups = c(
+      "Main Focus Areas", "Additional Focus Areas",
+      "AUD_Priority", "Central Business District", 
+      "Downtown area for clipping polygons", 
+      "Historic District (El Pueblo Viejo)", "Zoning"),
+    options = layersControlOptions(collapsed = T)) %>% 
+  hideGroup("AUD_Priority") %>% 
+  hideGroup("Central Business District") %>% 
+  hideGroup("Downtown area for clipping polygons") %>% 
+  hideGroup("Historic District (El Pueblo Viejo)") %>% 
+  hideGroup("Zoning") %>% 
+  fitBounds(bb[['xmin']], bb[['ymin']], bb[['xmax']], bb[['ymax']])
 ```
 
 ## Projects
