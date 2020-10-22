@@ -1,14 +1,20 @@
 ---
-title: "Submit a Project"
+title: "Feedback"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Propose a project by filling out the following:
+Please share your feedback on a project by filling out the following:
 
-- [Project - Google Form](https://docs.google.com/forms/d/e/1FAIpQLScJYmipt-UFaPbLfluu8idM9qHTyLDSMFJLic_VXIj6qni6tQ/viewform){target="_blank"}
+- [**Public Feedback Form**](https://docs.google.com/forms/d/1tBOA6dEWcyh0u8KZ6pkfq5edvIO2u1CRtqQTyn2_q0Y/edit?gxids=7757)
+
+## Propose a project (closed)
+
+Although the period for proposing a project is now closed (as of 2020-10-22), you may wish to submit or revise by filling out the following:
+
+- [Project Proposal Form](https://docs.google.com/forms/d/e/1FAIpQLScJYmipt-UFaPbLfluu8idM9qHTyLDSMFJLic_VXIj6qni6tQ/viewform){target="_blank"}
 
 The next time this website gets regenerated (for now manually; eventually automatically), the project will populate on the site (unless there's an issue with processing).
 

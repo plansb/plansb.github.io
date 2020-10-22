@@ -57,7 +57,7 @@ navbar:
   - text: Projects
     icon: fa-pencil
     href: index.html#projects
-  - text: Submit
+  - text: Feedback
     icon: fa-paper-plane
     href: ./submit.html
   right:

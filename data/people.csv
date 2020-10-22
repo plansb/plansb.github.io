@@ -41,10 +41,10 @@ team_name,role,name,email,is_team_leader,team_key,area_key
 500 Block Team B,Emerging Architectural Professionals,Vandhana Balachandran,vandhana@bbird.com,NA,500B,500
 500 Block Team B,Landscape Architects,Lane Goodkind,lane@lanegoodkind.com,NA,500B,500
 600 Block Team A,Architects,Michael Holliday,michael@dmhaa.com,NA,600A,600
-601 Block Team A,Architects,Andrew Gartner,andrew@gartnerdesignco.com,NA,NA,NA
-602 Block Team A,Architects,Gelare Macon AICP,gmacon@flowersassoc.com,NA,NA,NA
-603 Block Team A,Community Stakeholders,Sicheng Wang,sicheng_wang@ucsb.edu,NA,NA,NA
-604 Block Team A,Architects,Rose Hillebrandt,rose@dmhaa.com,NA,NA,NA
+600 Block Team A,Architects,Andrew Gartner,andrew@gartnerdesignco.com,NA,600A,600
+600 Block Team A,Architects,Gelare Macon AICP,gmacon@flowersassoc.com,NA,600A,600
+600 Block Team A,Community Stakeholders,Sicheng Wang,sicheng_wang@ucsb.edu,NA,600A,600
+600 Block Team A,Architects,Rose Hillebrandt,rose@dmhaa.com,NA,600A,600
 600 Block Team A,Community Stakeholders,Mina Ash,Mash@designarc.net,NA,600A,600
 600 Block Team A,Community Young People,Ani Rodriguez,Arodriguez.Cza@Gmail.Com,NA,600A,600
 600 Block Team A,Emerging Architectural Professionals,Joseph Rabun,jrabun@harrisondesign.com,NA,600A,600
