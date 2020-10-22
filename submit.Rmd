@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Please share your feedback on a project by filling out the following:
 
-- [**Public Feedback Form**](https://docs.google.com/forms/d/1tBOA6dEWcyh0u8KZ6pkfq5edvIO2u1CRtqQTyn2_q0Y/edit?gxids=7757)
+- [**Public Feedback Form**](https://forms.gle/YxJmKi1KYCBHXM2s8)
 
 ## Propose a project (closed)
 
