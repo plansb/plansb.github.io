@@ -4,8 +4,8 @@ output: html_document
 params:
   #project_name: "Project Template"
   #project_key: "500-block-dumbbell-development"
-  project_name: "The Makers' Block"
-  project_key: "the-makers-block"
+  project_name: "paseos-de-la-guerra-plaza"
+  project_key: "paseos-de-la-guerra-plaza"
   # project_name: "nice-potted-plants-on-street"
   # project_key: "nice-potted-plants-on-street"
   # project_name: "3 Story Multi-family behind Staples above enclosed parking garage"
@@ -33,8 +33,9 @@ height: 300px; /* only if you want fixed height */
 source("functions.R")
 
 # params <- list(
-#   project_key = "architect",
-#   project_key = "Architect")
+  # project_key = "architect",
+  # project_key = "14-w-gutierrez-st",
+  # project_key = "paseos-de-la-guerra-plaza")
 
 project <<- read_csv(projects_csv) %>% 
   filter(project_key == params$project_key) %>%
@@ -65,8 +66,6 @@ project <<- read_csv(projects_csv) %>%
 ::: {} 
 
 ```{r map}
-source("functions.R")
-
 area_plys <- get_area_plys()
 
 project_ply <- area_plys %>% 
@@ -173,11 +172,24 @@ if (nrow(docs) > 0){
 }
 ```
 
+```{r drawing_gallery}
+docs_pngs <- docs %>% 
+  filter(path_ext(path) == "pdf") %>% 
+  mutate(
+    path_png = map(path, pdf2pngs)) %>% 
+  # TODO: fix errors with pdf2pngs()
+  #   PDF error: Unknown character collection 'PDFTron-Identity'
+  #   makers-block-500-team-b-site-landscape-plan
+  unnest(path_png)
+
+if (nrow(docs_pngs) > 0)
+  paths2carousel(docs_pngs$path_png)
+```
+
+
 ## Images
 
 ```{r image_gallery}
-library(bsplus)
-
 d <- read_csv(files_csv) %>% 
   filter(
     project_key == params$project_key,

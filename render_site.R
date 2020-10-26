@@ -24,7 +24,7 @@ projects <- read_csv(projects_csv) %>%
   select(
     key = project_key, name = project_title, htm = project_htm) %>% 
   arrange(key)
-#View(projects)
+#View(projects); projects <- slice(projects, 23:31)
 stopifnot(!any(duplicated(projects$key)))
 pwalk(projects, render_project)
 #pwalk(projects %>% filter(name == "The Makers' Block"), render_project)

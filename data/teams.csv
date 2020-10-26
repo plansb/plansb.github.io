@@ -8,7 +8,7 @@ team_key,team_name,team_matrix,area_key,n_Architects,n_Community Stakeholders,n_
 700A,700/800 Block Team A,Area 4 A-  700/800 Block Team,700,2,1,2,2,1,1,0,1,10,./team_700A.html
 700B,700/800 Block Team B,Area 4 B-  700/800 Block Team,700,3,2,1,2,1,0,0,0,9,./team_700B.html
 900A,900 Block Team A,Area 5 A-  900 Block Team,900,2,1,2,1,1,1,0,1,9,./team_900A.html
-900B,900 Block Team B,Area 5 B-  900 Block Team,900,3,2,1,3,0,0,0,0,9,./team_900B.html
+900B,900 Block Team B,Area 5 B-  900 Block Team,900,4,1,0,4,0,0,0,1,10,./team_900B.html
 1000A,1000 Block Team A,Area 6 A-  1000 Block Team,1000,2,1,2,2,1,1,0,0,9,./team_1000A.html
 1000B,1000 Block Team B,Area 6 B-  1000 Block Team,1000,2,2,2,2,0,0,0,0,8,./team_1000B.html
 sup,Expertise Support Team,Expertise Support Team (Roaming Support Team),NA,0,2,0,0,0,0,0,0,2,./team_sup.html

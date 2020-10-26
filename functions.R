@@ -10,7 +10,7 @@ shelf(
   # map
   sf,leaflet,
   # report
-  knitr,rmarkdown,rstudio/DT,htmltools)
+  bsplus,knitr,magick,pdftools,rmarkdown,rstudio/DT,htmltools)
 
 # paths ----
 
@@ -342,8 +342,8 @@ str2cap <- function(s){
   s <- paste0(toupper(substr(s, 1, 1)), substr(s, 2, nchar(s)))
   s <- s %>% 
     str_replace("^# ", "Number of ") %>% 
-    str_replace("(square feet)", "(ft^2^)") %>% 
-    str_replace("(feet)", "(ft)") %>% 
+    str_replace("square feet", "ft^2^") %>% 
+    str_replace("feet", "ft") %>% 
     str_replace("FAR", "floor area ratio (FAR)")
   s
 }
@@ -365,6 +365,34 @@ fld2str <- function(fld, lbl = fld){
   }
 
   str
+}
+
+pdf2pngs <- function(path_pdf){
+  # path_pdf <- docs$path
+  
+  stopifnot(length(path_pdf) == 1)
+  
+  path <- fs::path_ext_remove(path_pdf)
+  
+  get_paths_png <- function(path_pdf){
+    pngs <- list.files(dirname(path_pdf), glue("{basename(path)} - pdf page [0-9]+.png"))
+    glue("{dirname(path)}/{pngs}")
+  }
+  
+  paths_png <- get_paths_png(path_pdf)
+  if (length(paths_png) > 0)
+    return(paths_png)
+  
+  pages <- magick::image_read_pdf(path_pdf)
+  
+  for (i in 1:length(pages)){
+    
+    path_png <- glue("{path} - pdf page {i}.png")
+    
+    magick::image_write(pages[i], path_png) 
+  }
+  
+  get_paths_png(path_pdf)
 }
 
 paths2carousel <- function(paths){
