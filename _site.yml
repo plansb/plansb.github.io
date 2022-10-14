@@ -1,6 +1,6 @@
-name: plansb.org
+name: PlanSB.github.io
 navbar:
-  title: planSB.org
+  title: PlanSB.github.io
   type: inverse
   left:
   - text: Teams
